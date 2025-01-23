@@ -4,7 +4,6 @@ import html2canvas from 'html2canvas';
 
 const MatchScreen = ({ userName, profile, onContinue }) => {
     const matchScreenRef = useRef(null);
-
     const handleShare = async () => {
         try {
             // Capture screenshot of the component
@@ -21,25 +20,31 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
 
             if (!blob) throw new Error('Failed to generate screenshot');
 
-            if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'match.png', { type: 'image/png' })] })) {
-                // Use Web Share API if supported
+            // Convert blob to object URL
+            const url = URL.createObjectURL(blob);
+
+            if (navigator.share) {
+                // Share the URL using Web Share API
                 await navigator.share({
                     title: 'Check out our match!',
                     text: `${userName} and ${profile.name} matched!`,
-                    files: [new File([blob], 'match.png', { type: 'image/png' })],
+                    url: url, // Share Blob URL instead of file
                 });
+
+                // Cleanup Blob URL after sharing
+                URL.revokeObjectURL(url);
             } else {
-                // Fallback for unsupported cases
+                // Fallback: Allow users to download the image
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'match.png';
-                link.click();;
+                link.click();
             }
         } catch (error) {
             console.error('Sharing failed', error);
-            alert('Sharing failed. Please try again or download the image manually.');
         }
     };
+
 
     return (
         <div

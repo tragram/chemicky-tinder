@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Heart, Share2, CheckCheck, Link2 } from 'lucide-react';
+import { Heart, Share2, CheckCheck, Link2, CalendarSync } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 const MatchScreen = ({ userName, profile, onContinue }) => {
-    const [copied, setCopied] = useState(false);
     const matchScreenRef = useRef(null);
 
     const handleShare = async () => {
@@ -16,32 +15,36 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
             });
 
             // Convert canvas to blob
-            const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve));
+            const blob = await new Promise<Blob | null>((resolve) =>
+                canvas.toBlob(resolve)
+            );
 
-            // Check if Web Share API is available
-            if (navigator.share) {
+            if (!blob) throw new Error('Failed to generate screenshot');
+
+            if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'match.png', { type: 'image/png' })] })) {
+                // Use Web Share API if supported
                 await navigator.share({
                     title: 'Check out our match!',
                     text: `${userName} and ${profile.name} matched!`,
-                    files: [new File([blob], 'match.png', { type: 'image/png' })]
+                    files: [new File([blob], 'match.png', { type: 'image/png' })],
                 });
             } else {
-                // Fallback for browsers without Web Share API
+                // Fallback for unsupported cases
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'match.png';
-                link.click();
+                link.click();;
             }
         } catch (error) {
             console.error('Sharing failed', error);
-            // Optionally, show an error message to the user
+            alert('Sharing failed. Please try again or download the image manually.');
         }
     };
 
     return (
-        <div 
+        <div
             ref={matchScreenRef}
-            className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center text-white p-4"
+            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center text-white p-4"
         >
             <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
@@ -73,10 +76,17 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
 
             <button
                 onClick={handleShare}
-                className="bg-[#f04e23] text-white px-8 py-3 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+                className="bg-[#f04e23] text-white px-8 py-3 my-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
             >
                 <Share2 className="w-5 h-5" />
                 Share Match
+            </button>
+            <button
+                onClick={onContinue}
+                className="bg-[#f04e23] text-white px-8 py-3 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+            >
+                <CalendarSync className="w-5 h-5" />
+                Keep swiping
             </button>
         </div>
     );

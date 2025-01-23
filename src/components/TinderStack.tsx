@@ -17,11 +17,8 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
             const newSwipedRight = swipedRight + 1;
             setSwipedRight(newSwipedRight);
 
-            if (newSwipedRight === 2) {
-                // Trigger match screen with the current and previous right-swiped profile
-                const previousRightSwipeIndex = cards.findIndex(p => p === swipedProfile) - 1;
-                const previousRightSwipeProfile = cards[previousRightSwipeIndex];
-                setMatchedProfile(previousRightSwipeProfile);
+            if (newSwipedRight >= 2) {
+                setMatchedProfile(swipedProfile);
             }
         }
 
@@ -31,15 +28,6 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
         setMatchedProfile(null);
     };
 
-    if (matchedProfile) {
-        return (
-            <MatchScreen 
-                userName={"Nadějný chemik"} 
-                profile={cards[0]} 
-                onContinue={handleContinue} 
-            />
-        );
-    }
 
     return (
         <div className="relative w-full h-full flex justify-center items-center overscroll-contain touch-none">
@@ -50,6 +38,13 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
                     onSwipe={handleSwipe}
                 />
             ))}
+        {matchedProfile && (
+            <MatchScreen
+                userName={"Nadějný chemik"}
+                profile={cards[0]}
+                onContinue={handleContinue}
+            />
+        )}
         </div>
     );
 };

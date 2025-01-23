@@ -1,51 +1,50 @@
 import React, { useState, useRef } from 'react';
 import { Heart, Share2, CheckCheck, Link2, CalendarSync } from 'lucide-react';
-import html2canvas from 'html2canvas';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 const MatchScreen = ({ userName, profile, onContinue }) => {
     const matchScreenRef = useRef(null);
+
     const handleShare = async () => {
         try {
-            // Capture screenshot of the component
-            const canvas = await html2canvas(matchScreenRef.current, {
-                scale: 2, // Increases resolution
-                useCORS: true, // Handles cross-origin images
-                backgroundColor: '#000000' // Matches the background
-            });
-
-            // Convert canvas to blob
-            const blob = await new Promise<Blob | null>((resolve) =>
-                canvas.toBlob(resolve)
-            );
-
-            if (!blob) throw new Error('Failed to generate screenshot');
-
-            // Convert blob to object URL
-            const url = URL.createObjectURL(blob);
-
-            if (navigator.share) {
-                // Share the URL using Web Share API
+            if (!matchScreenRef.current) {
+                console.error("MatchScreen ref is null");
+                return;
+            }
+    
+            // Capture the screenshot as a blob
+            const blob = await toBlob(matchScreenRef.current, { cacheBust: true });
+    
+            if (!blob) {
+                throw new Error('Failed to create image blob');
+            }
+    
+            // Create a File object
+            const file = new File([blob], 'picture.jpg', { type: 'image/jpeg' });
+    
+            // Check if the device supports file sharing
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
                 await navigator.share({
+                    files: [file],
                     title: 'Check out our match!',
-                    text: `${userName} and ${profile.name} matched!`,
-                    url: url, // Share Blob URL instead of file
+                    text: 'Láska na první pohled',
+                    url: 'some_url',
                 });
-
-                // Cleanup Blob URL after sharing
-                URL.revokeObjectURL(url);
             } else {
-                // Fallback: Allow users to download the image
+                // Fallback for downloading the image
                 const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/png');
+                link.href = URL.createObjectURL(blob);
                 link.download = 'match.png';
                 link.click();
+    
+                // Cleanup the object URL
+                URL.revokeObjectURL(link.href);
             }
         } catch (error) {
             console.error('Sharing failed', error);
         }
     };
-
-
+    
     return (
         <div
             ref={matchScreenRef}

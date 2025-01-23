@@ -28,7 +28,6 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
                     files: [file],
                     title: 'Check out our match!',
                     text: 'Láska na první pohled',
-                    url: 'some_url',
                 });
             } else {
                 // Fallback for downloading the image

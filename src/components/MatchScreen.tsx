@@ -1,17 +1,48 @@
-import { Heart, Share2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Heart, Share2, CheckCheck, Link2 } from 'lucide-react';
+import html2canvas from 'html2canvas';
 
 const MatchScreen = ({ userName, profile, onContinue }) => {
-    const handleShare = () => {
-        if (navigator.share) {
-            navigator.share({
-                title: 'Check out our match!',
-                text: `${userName} and ${profile.name} matched!`,
-                url: profile.images[0]
+    const [copied, setCopied] = useState(false);
+    const matchScreenRef = useRef(null);
+
+    const handleShare = async () => {
+        try {
+            // Capture screenshot of the component
+            const canvas = await html2canvas(matchScreenRef.current, {
+                scale: 2, // Increases resolution
+                useCORS: true, // Handles cross-origin images
+                backgroundColor: '#000000' // Matches the background
             });
+
+            // Convert canvas to blob
+            const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve));
+
+            // Check if Web Share API is available
+            if (navigator.share) {
+                await navigator.share({
+                    title: 'Check out our match!',
+                    text: `${userName} and ${profile.name} matched!`,
+                    files: [new File([blob], 'match.png', { type: 'image/png' })]
+                });
+            } else {
+                // Fallback for browsers without Web Share API
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'match.png';
+                link.click();
+            }
+        } catch (error) {
+            console.error('Sharing failed', error);
+            // Optionally, show an error message to the user
         }
     };
+
     return (
-        <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center text-white p-4">
+        <div 
+            ref={matchScreenRef}
+            className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center text-white p-4"
+        >
             <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
             <div className="flex items-center justify-center mb-8">
@@ -39,7 +70,6 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
                     You and {profile.name} liked each other
                 </p>
             </div>
-
 
             <button
                 onClick={handleShare}

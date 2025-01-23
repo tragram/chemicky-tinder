@@ -3,14 +3,23 @@ import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
 import { Card, CardBody } from "@heroui/card";
 import { BriefcaseBusiness } from "lucide-react";
+import { TinderProfile } from "@/types";
+import { cn } from "clsx-for-tailwind";
 
 const SWIPE_THRESHOLD = 150; // Pixels to trigger swipe
 const SCREEN_WIDTH = window.innerWidth;
 
-const TinderCard = ({ profile, onSwipe }) => {
-    const [gone, setGone] = useState(false);
+interface TinderCardProps {
+    profile: TinderProfile;
+    onSwipe: (direction: string, profile: TinderProfile) => void;
+}
+
+const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
+    const [likeVisibility, setLikeVisibility] = useState(0);
+    const [nopeVisibility, setNopeVisibility] = useState(0);
+    const [swipeDirection, setSwipeDirection] = useState(null);
     const [currentImage, setCurrentImage] = useState(0);
-    const cardRef = useRef(null);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({
         x: 0,
@@ -25,7 +34,17 @@ const TinderCard = ({ profile, onSwipe }) => {
             if (tap) return;
 
             const swipeDirection = mx > 0 ? "right" : "left";
+            setSwipeDirection(swipeDirection);
             const absMx = Math.abs(mx);
+            const tagOpacity = absMx / SWIPE_THRESHOLD;
+            if (swipeDirection == "right") {
+                setLikeVisibility(tagOpacity);
+                setNopeVisibility(0);
+            } else {
+                setLikeVisibility(0);
+                setNopeVisibility(tagOpacity);
+
+            }
 
             if (!active && absMx > SWIPE_THRESHOLD) {
                 // Swipe out of screen
@@ -44,6 +63,12 @@ const TinderCard = ({ profile, onSwipe }) => {
                     onSwipe(swipeDirection, profile);
                 }, 300);
             } else {
+                if (!active) {
+                    //stopped dragging too soon
+                    setNopeVisibility(0);
+                    setLikeVisibility(0);
+                    setSwipeDirection(null);
+                }
                 // Normal dragging
                 api.start({
                     x: active ? mx : 0,
@@ -58,7 +83,7 @@ const TinderCard = ({ profile, onSwipe }) => {
 
     const handleTap = (e) => {
         const { clientX } = e;
-        const rect = cardRef.current.getBoundingClientRect();
+        const rect = cardRef.current?.getBoundingClientRect();
         const tapPosition = clientX - rect.left;
         const width = rect.width;
 
@@ -111,16 +136,21 @@ const TinderCard = ({ profile, onSwipe }) => {
                         {profile.images.map((image, index) => (
                             <div
                                 key={index}
-                                className="flex-shrink-0 w-full h-full"
+                                className="flex-shrink-0 w-full h-full relative"
                                 style={{
                                     backgroundImage: `url(${image})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center'
                                 }}
-                            />
+                            >
+                                <div className={cn("absolute inset-0  bg-opacity-20", swipeDirection === "right" ? "bg-green-600" : "bg-red-600")} style={{ opacity: Math.max(nopeVisibility,likeVisibility)-0.5 }}></div>
+                            </div>
                         ))}
                     </div>
                 </div>
+
+                <div className="absolute top-8 left-8 border-2 border-green-600 text-green-600 p-2 rounded-full font-bold" style={{ opacity: likeVisibility }}>LIKE</div>
+                <div className="absolute top-8 right-8 border-2 border-red-600 text-red-600 p-2 rounded-full font-bold" style={{ opacity: nopeVisibility }}>NOPE</div>
 
                 {/* Info overlay */}
                 <div className="absolute bottom-0 p-8 w-full text-[white]">

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import TinderCard from './TinderCard';
+import { TinderProfile } from '@/types';
 
-const TinderStack = ({ profiles, onSwipe }) => {
+interface TinderStackProps {
+    profiles: TinderProfile[];
+}
+
+const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
     const [cards, setCards] = useState(profiles);
 
     const handleSwipe = (direction, swipedProfile) => {
         setCards(prevCards =>
             prevCards.filter(profile => profile !== swipedProfile)
         );
-
-        onSwipe?.(direction, swipedProfile);
     };
 
     return (
@@ -19,9 +22,6 @@ const TinderStack = ({ profiles, onSwipe }) => {
                     key={index}
                     profile={profile}
                     onSwipe={handleSwipe}
-                    style={{
-                        zIndex: cards.length - index, 
-                    }}
                 />
             ))}
         </div>

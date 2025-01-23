@@ -1,5 +1,4 @@
 import DefaultLayout from "@/layouts/default";
-import TinderCard from "@/components/TinderCard";
 import data from '@/dating_profiles.yaml';
 import TinderStack from "@/components/TinderStack";
 

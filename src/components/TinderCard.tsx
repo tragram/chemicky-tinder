@@ -1,14 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
-import { Card, CardBody, CardFooter } from "@heroui/card";
-
+import { Card, CardBody } from "@heroui/card";
 import { BriefcaseBusiness } from "lucide-react";
-import { px } from "framer-motion";
 
-// const IconText()
+const SWIPE_THRESHOLD = 150; // Pixels to trigger swipe
+const SCREEN_WIDTH = window.innerWidth;
 
-const TinderCard = ({ item, onSwipe }) => {
+const TinderCard = ({ profile, onSwipe }) => {
     const [gone, setGone] = useState(false);
     const [currentImage, setCurrentImage] = useState(0);
     const cardRef = useRef(null);
@@ -25,22 +24,36 @@ const TinderCard = ({ item, onSwipe }) => {
         ({ active, movement: [mx, my], direction: [dx], velocity, tap }) => {
             if (tap) return;
 
-            const trigger = velocity > 0.5;
-            const swipeDirection = dx > 0 ? "right" : "left";
+            const swipeDirection = mx > 0 ? "right" : "left";
+            const absMx = Math.abs(mx);
 
-            if (trigger && !active) {
-                setGone(true);
-                onSwipe(swipeDirection, item);
+            if (!active && absMx > SWIPE_THRESHOLD) {
+                // Swipe out of screen
+                const outX = swipeDirection === "right"
+                    ? SCREEN_WIDTH
+                    : -SCREEN_WIDTH;
+
+                api.start({
+                    x: outX,
+                    rotate: dx * 0.1,
+                    scale: 0.8,
+                });
+
+                // Delay to allow animation before callback
+                setTimeout(() => {
+                    onSwipe(swipeDirection, profile);
+                }, 300);
+            } else {
+                // Normal dragging
+                api.start({
+                    x: active ? mx : 0,
+                    y: active ? my : 0,
+                    rotate: active ? mx * 0.1 : 0,
+                    scale: active ? 1.1 : 1,
+                });
             }
-
-            api.start({
-                x: gone ? dx * 200 : active ? mx : 0,
-                y: gone ? my : active ? my : 0,
-                rotate: active ? mx / 100 : 0,
-                scale: active ? 1.1 : 1,
-            });
         },
-        { filterTaps: true }
+        { filterTaps: true, eventOptions: { capture: true } }
     );
 
     const handleTap = (e) => {
@@ -52,7 +65,7 @@ const TinderCard = ({ item, onSwipe }) => {
         if (tapPosition < width / 2) {
             setCurrentImage(prev => Math.max(prev - 1, 0));
         } else {
-            setCurrentImage(prev => Math.min(prev + 1, item.images.length - 1));
+            setCurrentImage(prev => Math.min(prev + 1, profile.images.length - 1));
         }
     };
 
@@ -67,63 +80,61 @@ const TinderCard = ({ item, onSwipe }) => {
                 scale,
                 touchAction: "none",
             }}
-            className="absolute w-[600px] h-[800px] bg-white shadow-lg rounded-lg overflow-hidden"
+            className="absolute aspect-[2/3] max-h-[600px] h-full max-w-full bg-white shadow-lg rounded-lg overflow-hidden z-0"
         >
-            <Card className="h-[600px] rounded-none" isFooterBlurred >
-                <CardBody className="p-0">
-                    {/* Image indicators */}
-                    <div className="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-10">
-                        {item.images.map((_, index) => (
+            <div className="h-full rounded-none relative">
+                {/* Image indicators */}
+                <div className="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-10">
+                    {profile.images.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`w-[35px] h-1.5 rounded backdrop-blur-md ${currentImage === index
+                                ? 'bg-white bg-opacity-90'
+                                : 'bg-white bg-opacity-50'
+                                }`}
+                        />
+                    ))}
+                </div>
+
+                {/* Image carousel */}
+                <div
+                    onClick={handleTap}
+                    className="relative w-full h-full overflow-hidden z-0"
+                >
+                    <div
+                        className="flex w-full h-full"
+                        style={{
+                            transform: `translateX(${-currentImage * 100}%)`,
+                            transition: 'transform 0.3s ease'
+                        }}
+                    >
+                        {profile.images.map((image, index) => (
                             <div
                                 key={index}
-                                className={`w-[35px] h-1.5 rounded backdrop-blur-md ${currentImage === index
-                                    ? 'bg-white bg-opacity-90'
-                                    : 'bg-white bg-opacity-50'
-                                    }`}
+                                className="flex-shrink-0 w-full h-full"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center'
+                                }}
                             />
                         ))}
                     </div>
-
-                    {/* Image carousel */}
-                    <div
-                        onClick={handleTap}
-                        className="relative w-full h-full overflow-hidden"
-                    >
-                        <div
-                            className="flex w-full h-full"
-                            style={{
-                                transform: `translateX(${-currentImage * 100}%)`,
-                                transition: 'transform 0.3s ease'
-                            }}
-                        >
-                            {item.images.map((image, index) => (
-                                <div
-                                    key={index}
-                                    className="flex-shrink-0 w-full h-full"
-                                    style={{
-                                        backgroundImage: `url(${image})`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center'
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </CardBody>
+                </div>
 
                 {/* Info overlay */}
-                <div className="absolute bottom-0 p-8 w-full text-[white] z-10 ">
+                <div className="absolute bottom-0 p-8 w-full text-[white]">
                     <div className="flex flex-grow flex-col w-full p-4 border-[#f04e23] border-2 backdrop-blur-sm rounded-lg bg-[#f04e23]/20">
-                        <h2 className="text-2xl font-bold">{item.name}</h2>
-                        <p className="text-small font-bold">{item.age} let</p>
-                        <div className="flex gap-1 text-small font-bold items-center"><BriefcaseBusiness size={16}/>{item.job}</div>
+                        <h2 className="text-2xl font-bold">{profile.name}</h2>
+                        <p className="text-small font-bold">{profile.age} let</p>
+                        <div className="flex gap-1 text-small font-bold items-center">
+                            <BriefcaseBusiness size={16} />{profile.job}
+                        </div>
                     </div>
                 </div>
-            </Card>
+            </div>
             <div className="p-4">
-                <p>
-                    {item.description}
-                </p>
+                <p>{profile.description}</p>
             </div>
         </animated.div>
     );

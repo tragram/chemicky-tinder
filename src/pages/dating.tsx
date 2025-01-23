@@ -1,13 +1,14 @@
 import DefaultLayout from "@/layouts/default";
 import TinderCard from "@/components/TinderCard";
 import data from '@/dating_profiles.yaml';
+import TinderStack from "@/components/TinderStack";
 
 export default function DatingPage() {
   console.log(data)
   return (
     <DefaultLayout>
-      <div className="flex w-screen h-screen items-center justify-center">
-        <TinderCard item={data[1]} onSwipe={undefined} />
+      <div className="flex w-screen h-screen items-center justify-center p-8">
+        <TinderStack profiles={data} />
       </div>
     </DefaultLayout>
   )

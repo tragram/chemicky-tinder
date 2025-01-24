@@ -32,7 +32,7 @@ export default function AvatarUpload({ url, onUpload }: AvatarUploadProps) {
       </Avatar>
       <Button
         variant="secondary"
-        className="absolute inset-0 flex items-center justify-center w-full h-full opacity-0 group-hover:opacity-80 transition-opacity"
+        className="absolute inset-0 rounded-full flex items-center justify-center w-full h-full opacity-0 group-hover:opacity-80 transition-opacity"
         onClick={() => fileInputRef.current?.click()}
       >
         Change

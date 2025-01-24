@@ -164,11 +164,11 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                         <p className={cn("text-2xl font-normal", `text-[${VSCHT_RED}]`)}>{profile.age}</p>
                     </div>
 
-                    <div className="flex gap-1 text-small font-bold items-center">
+                    <div className="flex gap-1 text-md font-bold items-center">
                         <BriefcaseBusiness size={16} color={VSCHT_RED} />{profile.job}
                     </div>
 
-                    <div className="flex gap-1 text-tiny font-semibold items-start">
+                    <div className="flex gap-1 text-sm font-semibold items-start">
                         <div><Quote size={16} color={VSCHT_RED} /></div>
                         <p>{profile.description}</p>
                     </div>

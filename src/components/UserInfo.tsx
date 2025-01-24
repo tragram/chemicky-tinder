@@ -8,11 +8,9 @@ import { Label } from "@/components/ui/label"
 import Avatar from "./AvatarUpload"
 import { cn } from "@/lib/utils"
 
-const VSCHT_RED = "#f04e23";
-
 export default function CollapsibleProfileCard() {
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const [name, setName] = useState("")
+    const [name, setName] = useState("Nadějný chemik")
     const [avatarUrl, setAvatarUrl] = useState("")
     const [height, setHeight] = useState<number | undefined>(undefined)
     const contentRef = useRef<HTMLDivElement>(null)
@@ -32,16 +30,16 @@ export default function CollapsibleProfileCard() {
 
     return (
         <Card
-            className={cn(`w-full max-w-md mx-auto overflow-hidden transition-all duration-1000 ease-in-out`,`border-color-[${VSCHT_RED}]`)}
-            style={{ minHeight: isCollapsed ? "6rem" : height ? `${height}px` : "auto" }}
+            className={cn(`absolute w-full max-w-md left-0 right-0 mx-auto overflow-hidden top-[50vh] transition-all bg-white border-primary duration-1000 ease-in-out`,isCollapsed?"translate-y-[40vh]":``)}
+            style={{ minHeight: isCollapsed ? "4rem" : height ? `${height}px` : "40px" }}
         >
-                <CardContent ref={contentRef} className="p-6 transition-all duration-1000 ease-in-out">
+                <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
                     <div
                         className={`flex transition-all duration-1000 ease-in-out ${isCollapsed ? "flex-row items-center" : "flex-col items-center"
                             }`}
                     >
                         <div
-                            className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-16 h-16 flex-shrink-0" : "w-32 h-32 mb-6"
+                            className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-32 h-32 mb-6"
                                 }`}
                         >
                             <Avatar url={avatarUrl} onUpload={setAvatarUrl} />
@@ -54,10 +52,9 @@ export default function CollapsibleProfileCard() {
                                     <Label htmlFor="name">Name</Label>
                                     <Input
                                         id="name"
-                                        placeholder="Enter your name"
+                                        placeholder="Nadějný chemik"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        required
                                     />
                                 </div>
                             ) : (

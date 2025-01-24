@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
-import { Card, CardBody } from "@heroui/card";
 import { ArrowLeft, BriefcaseBusiness, Heart, Quote, ThumbsDown } from "lucide-react";
 import { TinderProfile } from "@/types";
 import { cn } from "clsx-for-tailwind";

@@ -4,17 +4,16 @@ import DatingPage from "@/pages/dating";
 import MatchScreen from "./components/MatchScreen";
 
 import profiles from '@/dating_profiles.yaml';
-import { Provider } from "./provider";
+import UserInfo from "./components/UserInfo";
 
 function App() {
   return (
     <Router>
-      <Provider>
         <Routes>
           <Route element={<DatingPage />} path="/" />
           <Route element={<MatchScreen userName={"Nadějný Chemik"} profile={profiles[0]} onContinue={undefined} />} path="/match" />
+          <Route element={<UserInfo/>} path="/user" />
         </Routes>
-      </Provider>
     </Router >
   );
 }

@@ -20,7 +20,7 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
             }
     
             // Create a File object
-            const file = new File([blob], 'picture.jpg', { type: 'image/jpeg' });
+            const file = new File([blob], 'picture.jpg', { type: 'image/png' });
     
             // Check if the device supports file sharing
             if (navigator.canShare && navigator.canShare({ files: [file] })) {

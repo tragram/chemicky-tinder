@@ -1,27 +1,38 @@
 import React, { useState, useRef } from 'react';
 import { Heart, Share2, CheckCheck, Link2, CalendarSync } from 'lucide-react';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import { TinderProfile } from '@/types';
+import removeAccents from 'remove-accents';
 
-const MatchScreen = ({ userName, profile, onContinue }) => {
+interface MatchScreenProps {
+    userName: string;
+    userAvatar: string;
+    profile: TinderProfile
+    onContinue: () => void;
+}
+
+const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile, onContinue }) => {
     const matchScreenRef = useRef(null);
-
+    const sanitizeUserName = (userName: string) => {
+        return removeAccents(userName).replace(/[^\x00-\x7F]/g, "").replace(" ", "_");
+    }
     const handleShare = async () => {
         try {
             if (!matchScreenRef.current) {
                 console.error("MatchScreen ref is null");
                 return;
             }
-    
+
             // Capture the screenshot as a blob
             const blob = await toBlob(matchScreenRef.current, { cacheBust: true });
-    
+
             if (!blob) {
                 throw new Error('Failed to create image blob');
             }
-    
+
             // Create a File object
-            const file = new File([blob], 'picture.jpg', { type: 'image/png' });
-    
+            const file = new File([blob], `${sanitizeUserName(userName)}_matched_${profile.name}.jpg`, { type: 'image/png' });
+
             // Check if the device supports file sharing
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                 await navigator.share({
@@ -35,7 +46,7 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
                 link.href = URL.createObjectURL(blob);
                 link.download = 'match.png';
                 link.click();
-    
+
                 // Cleanup the object URL
                 URL.revokeObjectURL(link.href);
             }
@@ -43,7 +54,7 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
             console.error('Sharing failed', error);
         }
     };
-    
+
     return (
         <div
             ref={matchScreenRef}
@@ -55,7 +66,7 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
                 <div
                     className="lg:w-[200px] w-[100px] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
-                        backgroundImage: `url(${profile.images[0]})`,
+                        backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}
@@ -73,7 +84,7 @@ const MatchScreen = ({ userName, profile, onContinue }) => {
 
             <div className="text-center mb-8">
                 <p className="text-2xl">
-                    You and {profile.name} liked each other
+                    {userName} and {profile.name} liked each other
                 </p>
             </div>
 

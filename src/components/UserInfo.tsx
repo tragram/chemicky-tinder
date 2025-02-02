@@ -7,13 +7,10 @@ import { Pencil } from "lucide-react"
 import AvatarUpload from "./AvatarUpload"
 import { cn } from "@/lib/utils"
 
-export default function CollapsibleProfileCard() {
-    const [isCollapsed, setIsCollapsed] = useState(false)
-    const [name, setName] = useState("Nadějný chemik")
-    const [isEditing, setIsEditing] = useState(false)
-    const [avatarUrl, setAvatarUrl] = useState("")
-    const [height, setHeight] = useState<number | undefined>(undefined)
-    const contentRef = useRef<HTMLDivElement>(null)
+export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAvatarUrl, isCollapsed, setIsCollapsed }) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [height, setHeight] = useState<number | undefined>(undefined);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (contentRef.current) {
@@ -44,8 +41,8 @@ export default function CollapsibleProfileCard() {
 
     return (
         <Card
-            className={cn(`absolute w-full max-w-md left-0 right-0 mx-auto overflow-hidden top-[50vh] transition-all bg-white border-primary duration-1000 ease-in-out`,
-                isCollapsed ? "translate-y-[40vh]" : "")}
+            className={cn(`rounded-3xl w-full overflow-hidden bg-white border-primary transition-all duration-1000 ease-in-out`,
+                isCollapsed ? "max-w-[600px]" : "aspect-[2/3] max-h-[90vh] h-full  max-w-full")}
             style={{ minHeight: isCollapsed ? "4rem" : height ? `${height}px` : "40px" }}
         >
             <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
@@ -57,7 +54,7 @@ export default function CollapsibleProfileCard() {
                         className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-32 h-32 mb-6"
                             }`}
                     >
-                        <AvatarUpload url={avatarUrl} onUpload={setAvatarUrl} />
+                        <AvatarUpload url={avatarUrl} onUpload={setAvatarUrl} isCollapsed={isCollapsed} />
                     </div>
                     <div
                         className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"

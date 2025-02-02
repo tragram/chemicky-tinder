@@ -4,13 +4,15 @@ import ReactDOM from "react-dom";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "./cropImage";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface AvatarUploadProps {
   url: string;
   onUpload: (croppedImage: string) => void;
+  isCollapsed: boolean;
 }
 
-export default function AvatarUpload({ url, onUpload }: AvatarUploadProps) {
+export default function AvatarUpload({ url, onUpload, isCollapsed }: AvatarUploadProps) {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -116,14 +118,14 @@ export default function AvatarUpload({ url, onUpload }: AvatarUploadProps) {
 
       {/* Avatar preview container – size controlled by the parent */}
       <div
-        className="relative w-full h-full rounded-full overflow-hidden bg-gray-200 cursor-pointer"
+        className={cn("relative w-full h-full rounded-full overflow-hidden bg-gray-200 cursor-pointer", isCollapsed ? "text-xs" : "")}
         onClick={() => fileInputRef.current?.click()}
       >
         {url ? (
           <img src={url} alt="avatar" className="object-cover w-full h-full" />
         ) : (
-          <div className="flex items-center justify-center w-full h-full text-gray-500">
-            Choose Image
+          <div className={cn("flex items-center justify-center w-full h-full text-gray-500")}>
+            {isCollapsed ? "" : "Choose Image"}
           </div>
         )}
         {/* Hover overlay */}

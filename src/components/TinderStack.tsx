@@ -1,32 +1,27 @@
 import React, { useState, useCallback } from 'react';
 import TinderCard from './TinderCard';
-import MatchScreen from './MatchScreen';
 import { TinderProfile } from '@/types';
 
 interface TinderStackProps {
     profiles: TinderProfile[];
+    onMatch: (matchedProfile: TinderProfile) => void;
 }
 
-const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
+const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
     const [cards, setCards] = useState(profiles);
     const [swipedRight, setSwipedRight] = useState(0);
-    const [matchedProfile, setMatchedProfile] = useState<TinderProfile | null>(null);
 
     const handleSwipe = useCallback((direction: string, swipedProfile: TinderProfile) => {
         if (direction === 'right') {
             const newSwipedRight = swipedRight + 1;
             setSwipedRight(newSwipedRight);
-
             if (newSwipedRight >= 2) {
-                setMatchedProfile(swipedProfile);
+                onMatch(swipedProfile);
             }
         }
 
     }, [swipedRight, cards]);
 
-    const handleContinue = () => {
-        setMatchedProfile(null);
-    };
 
 
     return (
@@ -38,13 +33,6 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles }) => {
                     onSwipe={handleSwipe}
                 />
             ))}
-        {matchedProfile && (
-            <MatchScreen
-                userName={"Nadějný chemik"}
-                profile={cards[0]}
-                onContinue={handleContinue}
-            />
-        )}
         </div>
     );
 };

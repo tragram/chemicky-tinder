@@ -108,7 +108,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                 scale,
                 touchAction: "none",
             }}
-            className="absolute aspect-[2/3] max-h-[600px] h-full rounded-3xl max-w-full bg-white shadow-lg z-0"
+            className="absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg z-0"
         >
             <div className="h-full rounded-3xl relative overflow-hidden ">
                 {/* Image indicators */}
@@ -178,11 +178,13 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 shadow-lg">
                     <ThumbsDown size={24} color="white" onClick={() => {
                         animateSwipe("left", -1);
+                        onSwipe("left", profile);
                     }} />
                 </div>
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500 shadow-lg">
                     <Heart size={24} color="white" onClick={() => {
                         animateSwipe("right", 1);
+                        onSwipe("right", profile);
                     }} />
                 </div>
             </div>

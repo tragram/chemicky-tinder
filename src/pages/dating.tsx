@@ -21,7 +21,7 @@ export default function DatingPage() {
       <div className="flex absolute w-screen h-[90vh] p-8 z-20 items-end">
         <TinderStack profiles={data} onMatch={setMatchedProfile} />
       </div>
-      <div className={cn("z-30 transition-all duration-1000 ease-in-out absolute w-screen flex items-center justify-center p-16", isUserCollapsed ? "h-[10vh] bottom-0" : "h-screen")}>
+      <div className={cn("z-30 transition-all duration-1000 ease-in-out absolute w-screen flex items-center justify-center", isUserCollapsed ? "h-[10vh] bottom-0 p-8" : "h-screen p-8")}>
         <UserInfo isCollapsed={isUserCollapsed} setIsCollapsed={setIsUserCollapsed} name={name} setName={setName} avatarUrl={avatarUrl} setAvatarUrl={setAvatarUrl} />
       </div>
 

@@ -42,8 +42,8 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
     return (
         <Card
             className={cn(`rounded-3xl w-full overflow-hidden bg-white border-primary transition-all duration-1000 ease-in-out`,
-                isCollapsed ? "max-w-[600px]" : "aspect-[2/3] max-h-[90vh] h-full  max-w-full")}
-            style={{ minHeight: isCollapsed ? "4rem" : height ? `${height}px` : "40px" }}
+                isCollapsed ? "max-w-[600px]" : "aspect-[2/3] h-full w-full")}
+            style={{ minHeight: isCollapsed ? "4rem" : (height ? `${height}px` : "40px") }}
         >
             <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
                 <div

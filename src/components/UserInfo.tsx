@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Pencil } from "lucide-react"
-import Avatar from "./AvatarUpload"
+import AvatarUpload from "./AvatarUpload"
 import { cn } from "@/lib/utils"
 
 export default function CollapsibleProfileCard() {
@@ -14,7 +14,7 @@ export default function CollapsibleProfileCard() {
     const [avatarUrl, setAvatarUrl] = useState("")
     const [height, setHeight] = useState<number | undefined>(undefined)
     const contentRef = useRef<HTMLDivElement>(null)
-    
+
     useEffect(() => {
         if (contentRef.current) {
             setHeight(contentRef.current.scrollHeight)
@@ -50,25 +50,22 @@ export default function CollapsibleProfileCard() {
         >
             <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
                 <div
-                    className={`flex transition-all duration-1000 ease-in-out ${
-                        isCollapsed ? "flex-row items-center" : "flex-col items-center"
-                    }`}
+                    className={`flex transition-all duration-1000 ease-in-out ${isCollapsed ? "flex-row items-center" : "flex-col items-center"
+                        }`}
                 >
                     <div
-                        className={`transition-all duration-1000 ease-in-out ${
-                            isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-32 h-32 mb-6"
-                        }`}
+                        className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-32 h-32 mb-6"
+                            }`}
                     >
-                        <Avatar url={avatarUrl} onUpload={setAvatarUrl} />
+                        <AvatarUpload url={avatarUrl} onUpload={setAvatarUrl} />
                     </div>
                     <div
-                        className={`transition-all duration-1000 ease-in-out ${
-                            isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
-                        }`}
+                        className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
+                            }`}
                     >
                         {!isCollapsed || isEditing ? (
                             <form onSubmit={isCollapsed ? handleNameSubmit : handleSubmit} className="space-y-2">
-                                <Label htmlFor="name">Name</Label>
+                                {!isCollapsed && <Label htmlFor="name">Name</Label>}
                                 <div className="flex gap-2">
                                     <Input
                                         id="name"
@@ -85,8 +82,8 @@ export default function CollapsibleProfileCard() {
                                 </div>
                             </form>
                         ) : (
-                            <div 
-                                className="text-lg font-semibold flex items-center gap-2 cursor-pointer" 
+                            <div
+                                className="text-lg font-semibold flex items-center gap-2 cursor-pointer"
                                 onClick={handleNameClick}
                             >
                                 {name}
@@ -97,9 +94,8 @@ export default function CollapsibleProfileCard() {
                 </div>
             </CardContent>
             <CardFooter
-                className={`transition-all duration-1000 ease-in-out ${
-                    isCollapsed ? "opacity-0 pointer-events-none h-0 p-0" : "opacity-100 h-auto"
-                }`}
+                className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "opacity-0 pointer-events-none h-0 p-0" : "opacity-100 h-auto"
+                    }`}
             >
                 <Button onClick={handleSubmit} className="w-full">
                     Submit

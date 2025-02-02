@@ -16,6 +16,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     const sanitizeUserName = (userName: string) => {
         return removeAccents(userName).replace(/[^\x00-\x7F]/g, "").replace(" ", "_");
     }
+    const imageFilename = sanitizeUserName(userName) + "_matched_" + sanitizeUserName(profile.name);
     const handleShare = async () => {
         try {
             if (!matchScreenRef.current) {
@@ -31,7 +32,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             }
 
             // Create a File object
-            const file = new File([blob], `${sanitizeUserName(userName)}_matched_${profile.name}.jpg`, { type: 'image/png' });
+            const file = new File([blob], `${imageFilename}.jpg`, { type: 'image/png' });
 
             // Check if the device supports file sharing
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -44,7 +45,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 // Fallback for downloading the image
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = 'match.png';
+                link.download = `${imageFilename}.png`;
                 link.click();
 
                 // Cleanup the object URL

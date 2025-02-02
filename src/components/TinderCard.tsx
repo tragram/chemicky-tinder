@@ -175,9 +175,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                 </div>
             </div>
             <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-4 z-10">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 shadow-lg">
-                    <ArrowLeft size={24} color="black" onClick={() => onSwipe("back", profile)} />
-                </div>
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 shadow-lg">
                     <ThumbsDown size={24} color="white" onClick={() => {
                         animateSwipe("left", -1);

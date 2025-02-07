@@ -1,6 +1,6 @@
 - name: "Pan Odměrný Válec"
-  description: "Jsem odměrný válec, ale říkej mi prostě Válec. Vysoký 25 cm, štíhlý, přesný a vždy připraven změřit, kolik toho zvládneš. Hledám někoho, kdo ocení mou transparentní povahu a nebude mě plnit toxickými látkami. Moje ideální rande? Něco tekutého, trocha chemie a spousta měření, jestli to mezi námi klapne. Swipe right, jestli hledáš někoho, kdo má svůj objem pod kontrolou!🧪✨"
-  age: "123"
+  description: "Jsem odměrný válec, ale říkej mi prostě Válec. Hledám někoho, kdo ocení mou transparentní povahu a nebude mě plnit toxickými látkami. Moje ideální rande? Něco tekutého, trocha chemie a spousta měření, jestli to mezi námi klapne. Swipe right, jestli hledáš někoho, kdo má svůj objem pod kontrolou!🧪✨"
+  age: "19. století"
   job: "Tekutinový analytik"
   images:
     - "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Measuring_cylinder_hg.jpg/800px-Measuring_cylinder_hg.jpg"
@@ -8,16 +8,48 @@
     - "https://m.verkon.cz/image/big/verkon-valec-odmerny-nizky-trida-presnosti-b-hneda-graduace-simax-27112.jpg"
 
 - name: "Erlenmeyerka"
-  description: ""
-  age: ""
-  job: ""
+  description: "Čau cukrouši. Pokud ti nevadí širší, ale stabilní lady, budu pro tebe to pravé. Najdeš pro mě užití v každé situaci a jestli máš zábrus, jsem si jistá, že si skvěle sedneme. Nabízím vzduchotěsný vztah na krátkou dobu, avšak když se zaseknu, je možné, že spolu budeme navždy."
+  age: "1860"
+  job: "makám v labu"
   images:
     - "https://upload.wikimedia.org/wikipedia/commons/7/78/250_mL_Erlenmeyer_flask.jpg"
-    - "https://upload.wikimedia.org/wikipedia/commons/7/78/250_mL_Erlenmeyer_flask.jpg"
-- name: "Křivule"
-  description: ""
-  age: ""
-  job: ""
+    - "Erlenmayerka.jpg"
+    - "Erlenmayerka_2.HEIC"
+
+- name: "Petriho miska"
+  description: "Nejsem žádná křehotinka, zvládám vysoké teploty pod autoklávem. Preferuji společnost před osamělým životem. Pokud máš rád dobrodružství, můžeme spolu nakultivovat nějakou zajímavou kulturu 😉."
+  age: "1887"
+  job: "makám v labu"
   images:
-    - "https://upload.wikimedia.org/wikipedia/commons/8/84/My_retort.jpg"
-    - "https://upload.wikimedia.org/wikipedia/commons/8/84/My_retort.jpg"
+    - "Petri_1.jpg"
+    - "Petri_5.HEIC"
+    - "Petriho miska.HEIC"
+    - "petriho miska3.HEIC"
+
+- name: "Zkumavka"
+  description: " #chci děti Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
+  age: "18.století"
+  job: "makám v labu"
+  images:
+    - "Zkumavka_1.jpg"
+    - "Zkumavka_2.jpg"
+    - "Zkumavka_3.jpg"
+
+- name: "Odměrná baňka"
+  description: "Čau. Mám sice dlouhý štíhlý krk ,ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas pokud se mnou neplánuješ zůstat na dlouhou dobu."
+  age: "polovina 19. století"
+  job: "makám v labu"
+  images:
+    - "Odmerna_banka_1.jpg"
+    - "Odmerna_banka_2.HEIC"
+    - "Odmerna_banka_3.HEIC"
+
+- name: "Epinka"
+  description: "Ahoj. Jsem malá, ale šikovná. Nemám moc ráda teplo, takže pozor na přílišnou vášeň. Hledám jen něco na jednu noc."
+  age: "1963"
+  job: "makám v labu"
+  images:
+    - "Epinka_1.HEIC"
+    - "Epinka_2.HEIC"
+    - "Epinka_3.HEIC"
+    

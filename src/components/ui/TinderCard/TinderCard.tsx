@@ -1,23 +1,41 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ForwardedRef, act } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
 import { ArrowLeft, BriefcaseBusiness, Heart, Quote, ThumbsDown } from "lucide-react";
 import { TinderProfile } from "@/types";
 import { cn } from "clsx-for-tailwind";
+import ImageCarousel from "./ImageCarousel";
+import ProfileInfo from "./ProfileInfo";
 
 const SWIPE_THRESHOLD = 150; // Pixels to trigger swipe
 const SCREEN_WIDTH = window.innerWidth;
-const VSCHT_RED = "#f04e23"
+const LIKE_COLOR_CLS = "bg-green-600";
+const NOPE_COLOR_CLS = "bg-red-600";
+
 interface TinderCardProps {
     profile: TinderProfile;
     onSwipe: (direction: string, profile: TinderProfile) => void;
 }
 
+
+type SwipeDirection = null | "left" | "right";
+
+const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
+    return (
+        <div className={cn("absolute bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{ opacity: visibility }}>
+            <div className={cn("absolute top-8 border-2  p-2 rounded-full font-bold", colorClassName, className)}>
+                {children}
+            </div>
+        </div>
+    )
+}
+
+
 const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
-    const [swipeDirection, setSwipeDirection] = useState(null);
-    const [currentImage, setCurrentImage] = useState(0);
+    const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
+    const [dragActive, setDragActive] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({
@@ -28,7 +46,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
         config: { tension: 300, friction: 20 },
     }));
 
-    const animateSwipe = (swipeDirection, dx) => {
+    const animateSwipe = (swipeDirection: SwipeDirection, dx) => {
         // Swipe out of screen
         const outX = swipeDirection === "right"
             ? SCREEN_WIDTH
@@ -45,7 +63,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
     const bindCard = useDrag(
         ({ active, movement: [mx, my], direction: [dx], velocity, tap }) => {
             if (tap) return;
-
+            setDragActive(active);
             const swipeDirection = mx > 0 ? "right" : "left";
             setSwipeDirection(swipeDirection);
             const absMx = Math.abs(mx);
@@ -83,19 +101,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
         },
         { filterTaps: true, eventOptions: { capture: true } }
     );
-
-    const handleTap = (e) => {
-        const { clientX } = e;
-        const rect = cardRef.current?.getBoundingClientRect();
-        const tapPosition = clientX - rect.left;
-        const width = rect.width;
-
-        if (tapPosition < width / 2) {
-            setCurrentImage(prev => Math.max(prev - 1, 0));
-        } else {
-            setCurrentImage(prev => Math.min(prev + 1, profile.images.length - 1));
-        }
-    };
+    // TODO: forward ref
 
     return (
         <animated.div
@@ -108,72 +114,24 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                 scale,
                 touchAction: "none",
             }}
-            className="absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg z-0"
+            className={cn("absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg", dragActive ? "z-50" : "z-0")}
         >
             <div className="h-full rounded-3xl relative overflow-hidden ">
-                {/* Image indicators */}
-                <div className="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-10">
-                    {profile.images.map((_, index) => (
-                        <div
-                            key={index}
-                            className={`w-[35px] h-1.5 rounded backdrop-blur-md ${currentImage === index
-                                ? `bg-[${VSCHT_RED}] bg-opacity-90`
-                                : `bg-[white] bg-opacity-50`
-                                }`}
-                        />
-                    ))}
-                </div>
+                <ImageCarousel profile={profile} cardRef={cardRef} />
 
-                {/* Image carousel */}
-                <div
-                    onClick={handleTap}
-                    className="relative w-full h-full overflow-hidden z-0"
-                >
-                    <div
-                        className="flex w-full h-full"
-                        style={{
-                            transform: `translateX(${-currentImage * 100}%)`,
-                            transition: 'transform 0.3s ease'
-                        }}
-                    >
-                        {profile.images.map((image, index) => (
-                            <div
-                                key={index}
-                                className="flex-shrink-0 w-full h-full relative"
-                                style={{
-                                    backgroundImage: `url(${image})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center'
-                                }}
-                            >
-                                <div className={cn("absolute inset-0  bg-opacity-20", swipeDirection === "right" ? "bg-green-600" : "bg-red-600")} style={{ opacity: Math.max(nopeVisibility, likeVisibility) - 0.5 }}></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className={`right-8`}>
+                    LIKE
+                </SwipeOverlay>
 
-                <div className="absolute top-8 left-8 border-2 border-green-600 text-green-600 p-2 rounded-full font-bold" style={{ opacity: likeVisibility }}>LIKE</div>
-                <div className="absolute top-8 right-8 border-2 border-red-600 text-red-600 p-2 rounded-full font-bold" style={{ opacity: nopeVisibility }}>NOPE</div>
+                <SwipeOverlay visibility={nopeVisibility} colorClassName={NOPE_COLOR_CLS} className={`left-8`}>
+                    NOPE
+                </SwipeOverlay>
 
-                {/* Info overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0 pointer-events-none"></div>
 
-                <div className="absolute flex flex-col bottom-0 p-8 w-full text-[white] gap-2">
-                    <div className="flex flex-row items-bottom gap-4">
-                        <h2 className={cn("text-2xl font-bold", `text-[white]`)} >{profile.name}</h2>
-                        <p className={cn("text-2xl font-normal", `text-[${VSCHT_RED}]`)}>{profile.age}</p>
-                    </div>
-
-                    <div className="flex gap-1 text-md font-bold items-center">
-                        <BriefcaseBusiness size={16} color={VSCHT_RED} />{profile.job}
-                    </div>
-
-                    <div className="flex gap-1 text-sm font-semibold items-start">
-                        <div><Quote size={16} color={VSCHT_RED} /></div>
-                        <p>{profile.description}</p>
-                    </div>
-                </div>
+                <ProfileInfo profile={profile} />
             </div>
+            {/* (dis)like buttons */}
             <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-4 z-10">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 shadow-lg">
                     <ThumbsDown size={24} color="white" onClick={() => {

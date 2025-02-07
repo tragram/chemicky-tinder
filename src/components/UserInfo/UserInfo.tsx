@@ -19,23 +19,23 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
     }, [name, avatarUrl])
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         if (name.trim()) {
-            setIsCollapsed(true)
-            setIsEditing(false)
+            setIsCollapsed(true);
+            setIsEditing(false);
         }
     }
 
     const handleNameClick = () => {
         if (isCollapsed) {
-            setIsEditing(true)
+            setIsEditing(true);
         }
     }
 
     const handleNameSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         if (name.trim()) {
-            setIsEditing(false)
+            setIsEditing(false);
         }
     }
 

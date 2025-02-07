@@ -1,17 +1,18 @@
 import DefaultLayout from "@/layouts/default";
 import data from '@/dating_profiles.yaml';
 import TinderStack from "@/components/TinderStack";
-import UserInfo from "@/components/UserInfo";
+import UserInfo from "@/components/UserInfo/UserInfo";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { TinderProfile } from "@/types";
 import MatchScreen from "@/components/MatchScreen";
 
 export default function DatingPage() {
-  const [isUserCollapsed, setIsUserCollapsed] = useState(false)
-  const [matchedProfile, setMatchedProfile] = useState<TinderProfile | null>(null);    
   const [name, setName] = useState("Nadějný chemik");
+  const [isUserCollapsed, setIsUserCollapsed] = useState(false);
+  const [matchedProfile, setMatchedProfile] = useState<TinderProfile | null>(null);    
   const [avatarUrl, setAvatarUrl] = useState("");
+
   const handleContinue = () => {
     setMatchedProfile(null);
   };

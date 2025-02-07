@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import TinderCard from './TinderCard';
+import TinderCard from './ui/TinderCard/TinderCard';
 import { TinderProfile } from '@/types';
 
 interface TinderStackProps {

@@ -8,9 +8,8 @@ interface TinderStackProps {
 }
 
 const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
-    const [cards, setCards] = useState(profiles);
     const [swipedRight, setSwipedRight] = useState(0);
-
+    const [activeCard, setActiveCard] = useState(0);
     const handleSwipe = useCallback((direction: string, swipedProfile: TinderProfile) => {
         if (direction === 'right') {
             const newSwipedRight = swipedRight + 1;
@@ -19,16 +18,16 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
                 onMatch(swipedProfile);
             }
         }
-
-    }, [swipedRight, cards]);
-
-
+        setActiveCard(activeCard + 1);
+    }, [swipedRight, activeCard]);
 
     return (
         <div className="relative w-full h-full flex justify-center items-center overscroll-contain touch-none">
-            {cards.map((profile, index) => (
+            {profiles.map((profile, index) => (
                 <TinderCard
                     key={index}
+                    zIndex={10 - index}
+                    active={activeCard === index}
                     profile={profile}
                     onSwipe={handleSwipe}
                 />

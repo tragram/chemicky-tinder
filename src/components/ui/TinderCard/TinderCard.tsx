@@ -14,6 +14,8 @@ const NOPE_COLOR_CLS = "bg-red-600";
 
 interface TinderCardProps {
     profile: TinderProfile;
+    active: boolean;
+    zIndex: number;
     onSwipe: (direction: string, profile: TinderProfile) => void;
 }
 
@@ -31,7 +33,7 @@ const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
 }
 
 
-const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
+const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwipe }) => {
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
     const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
@@ -113,10 +115,11 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, onSwipe }) => {
                 rotate,
                 scale,
                 touchAction: "none",
+                zIndex: dragActive ? 50 : zIndex
             }}
-            className={cn("absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg", dragActive ? "z-50" : "z-0")}
+            className={cn("absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg")}
         >
-            <div className="h-full rounded-3xl relative overflow-hidden ">
+            <div className={cn("h-full transition-all rounded-3xl relative overflow-hidden ", active ? "" : "blur-sm ")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className={`right-8`}>

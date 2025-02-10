@@ -1,6 +1,6 @@
 - name: "Pan Odměrný Válec"
-  description: "Jsem odměrný válec, ale říkej mi prostě Válec. Hledám někoho, kdo ocení mou transparentní povahu a nebude mě plnit toxickými látkami. Moje ideální rande? Něco tekutého, trocha chemie a spousta měření, jestli to mezi námi klapne. Swipe right, jestli hledáš někoho, kdo má svůj objem pod kontrolou!🧪✨"
-  age: "19. století"
+  description: "Jsem odměrný válec, ale říkej mi prostě Válec. Hledám někoho, kdo ocení mou transparentní povahu a nebude mě plnit toxickými látkami. Moje ideální rande? Něco tekutého, trocha chemie a spousta měření, jestli to mezi námi klapne."
+  age: "18. - 19. století"
   job: "Tekutinový analytik"
   images:
     - "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Measuring_cylinder_hg.jpg/800px-Measuring_cylinder_hg.jpg"
@@ -22,13 +22,21 @@
   job: "makám v labu"
   images:
     - "Petri_1.jpg"
+    - "petriho miska.jpg"
+    - "petrihomiska 2.jpg"
+    - "petrihomiska1.jpg"
+    - "petrihomiska2.jpg"
+    - "petrihomiska3.jpg"
+    - "petrihomisky4.jpg"
 
 - name: "Zkumavka"
   description: " #chci děti Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
   age: "18.století"
   job: "makám v labu"
   images:
-
+    - "Zkumavka_2.jpg"
+    - "Zkumavka_3.jpg"
+    - "Zkumavka_4.jpg"
 
 - name: "Odměrná baňka"
   description: "Čau. Mám sice dlouhý štíhlý krk ,ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas pokud se mnou neplánuješ zůstat na dlouhou dobu."
@@ -81,7 +89,10 @@
   job: "Destičkaření"
   images:
     - "mikrotitr1.jpg"
-
+    - "mikrotitr2.jpeg"
+    - "mikrotitr3.jpeg"
+    - "mikrotitr4.jpeg"
+    
 - name: "Kávovar"
   description: "Jsem velmi pracovitý, energetický a nevadí mi vstávat brzo ráno. Rád lidem v mém okolí zlepšuji náladu a samotného mě to dělá velice šťastným. Nemám rád instantní vztahy. PS. Nerad po sobě uklízím."
   age: "1884"
@@ -132,3 +143,83 @@
   images:
     - "bryle1.jpg"   
     - "bryle2.jpg"   
+
+- name: "Byreta"
+  description: "Zdravím. Pokud máš rád/a štíhlé a vysoké dámy dávej pozor. Jsem náročná a přesná. Pokud to se mnou zvládneš, odměním tě přesnými výsledky a barevnou změnou. Chci někoho kdo o mě bude pečovat a nezahodí mě po první noci."
+  age: "1845"
+  job: "makám v labu"
+  images:
+    - "byreta1.jpg"   
+    - "byreta2.jpg"  
+    - "byreta3.jpg"
+
+- name: "Titrační baňka"
+  description: "Líbí se ti mé krásné oblé křivky a objemnější spodní polovina?Tak neváhej a swipe doprava. Můžeme si spolu užít den analytické chemie, časem tě možná představím kamarádce byretě a to potom bude jízda."
+  age: "1845"
+  job: "makám v labu"
+  images:
+    - "titrbanka1.jpg"   
+
+- name: "Vialka"
+  description: "Možná jsem rozměrem malý, ale mám velkou duši. Jsem šikovný, pracovitý a zodpovědný – pořád sebou nosím gumu."
+  age: "1930"
+  job: "makám v labu"
+  images:
+    - "vialky1.jpg"   
+
+- name: "Alonž"
+  description: "Máš rád ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
+  age: "17. - 18. století"
+  job: "destilační procesy"
+  images:
+    - "alonz1.jpg"   
+
+- name: "Třecí miska s tloučkem"
+  description: "Hledáme kamarády, kteří s námi budou zkoušet nové věci. Pouze nezávazně. Rozdrtíme vše co jde, ale budeš muset zabrat."
+  age: "starověk"
+  job: "drtiči"
+  images:
+    - "trecimiska1.jpg"   
+    - "trecimiska2.jpg"   
+    - "trecimiska3.jpg"   
+
+- name: "Chladič"
+  description: "Občas ti můžu připadat jako studený čumák, ale na něco to prostě chce chladnou hlavu. Funguji dobře i pod tlakem ale pokud to budeš přehánět s temperamentem, tak budu muset upustit páru. Páry jsou mým potěšením… nechceš ty být se mnou v páru?"
+  age: "30. léta 20. století"
+  job: "chladírenství"
+  images:
+    - "Cleisenuv_chladic.jpg"   
+    - "chladic1.jpg"   
+    - "chladic2.jpg"   
+
+- name: "Talková lahev"
+  description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
+  age: "1832"
+  job: "kde se dá"
+  images:
+    - "lakev1.jpg"   
+    - "lahev2.jpg"   
+    - "lahev3.jpg"   
+
+- name: "Trojnožka"
+  description: ""
+  age: ""
+  job: ""
+  images:
+    - "trojnozka1.jpg"   
+    - "trojnozka2.jpg"   
+    - "trojnozka3.jpg"   
+
+- name: "Kahan"
+  description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu! <3"
+  age: "19. století"
+  job: "záhřevy všeho druhu"
+  images:
+    - ""  
+
+- name: "Kádinka"
+  description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu! <3"
+  age: "19. století"
+  job: "záhřevy všeho druhu"
+  images:
+    - ""  

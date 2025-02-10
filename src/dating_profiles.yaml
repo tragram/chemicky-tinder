@@ -7,14 +7,14 @@
     - "https://www.funchem.cz/fotky27667/fotos/27667_912__vyr_799_valec-50.webp"
     - "https://m.verkon.cz/image/big/verkon-valec-odmerny-nizky-trida-presnosti-b-hneda-graduace-simax-27112.jpg"
 
-- name: "Erlenmeyerka"
+- name: "Erlenka"
   description: "Čau cukrouši. Pokud ti nevadí širší, ale stabilní lady, budu pro tebe to pravé. Najdeš pro mě užití v každé situaci a jestli máš zábrus, jsem si jistá, že si skvěle sedneme. Nabízím vzduchotěsný vztah na krátkou dobu, avšak když se zaseknu, je možné, že spolu budeme navždy."
   age: "1860"
   job: "makám v labu"
   images:
     - "https://upload.wikimedia.org/wikipedia/commons/7/78/250_mL_Erlenmeyer_flask.jpg"
+    - "Erlenka1.jpg"
     - "Erlenmayerka.jpg"
-    - "Erlenmayerka_2.HEIC"
 
 - name: "Petriho miska"
   description: "Nejsem žádná křehotinka, zvládám vysoké teploty pod autoklávem. Preferuji společnost před osamělým životem. Pokud máš rád dobrodružství, můžeme spolu nakultivovat nějakou zajímavou kulturu 😉."
@@ -23,15 +23,12 @@
   images:
     - "Petri_1.jpg"
 
-
 - name: "Zkumavka"
   description: " #chci děti Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
   age: "18.století"
   job: "makám v labu"
   images:
-    - "Zkumavka_1.jpg"
-    - "Zkumavka_2.jpg"
-    - "Zkumavka_3.jpg"
+
 
 - name: "Odměrná baňka"
   description: "Čau. Mám sice dlouhý štíhlý krk ,ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas pokud se mnou neplánuješ zůstat na dlouhou dobu."
@@ -47,7 +44,91 @@
   age: "1963"
   job: "makám v labu"
   images:
-    - "Epinka1.jpg"
-    - "Epinka2.jpg"
-    - "Epinka3.jpg"
+    - "epinka1.jpg"
+    - "epinka2.jpg"
+    - "epinka3.jpg"
+
+- name: "Azbestová síťka"
+  description: "Odolám i tomu největšímu žáru ale rozhodně u toho nezůstanu vlažná. Pokud chceš přivést až k bodu varu, tak jsem ta pravá pro tebe. Pokud se ke mně budeš chovat dobře, užijeme si spolu hodně žhavé zábavy. Pokud se mě ale pokusíš zlomit, počítej že budu dost toxická."
+  age: "1850"
+  job: "makám v labu"
+  images:
+    - "azbest1.jpg"
+    - "azbest2.jpg"
+    - "azbest3.jpg"
+
+- name: "Balónek"
+  description: "Pod tlakem dělám divy. Pevně mě smáčkni a zažiješ zázraky. Jsem kompatibilní pouze se štíhlými protějšky. Hledám něco na občasné protažení. "
+  age: "začátek 20. století"
+  job: "makám v labu"
+  images:
+    - "balonekl.jpg"
+    - "balonek2.jpg"
+    - "balonek3.jpg"
+
+- name: "Pipetman"
+  description: "Jsem precizní a spolehlivý. Jen vážné vztahy. Dokážu odhalit i nejjemnější manipulace. Pokud víš, jak mě správně zmáčknout, slibuji, že náš vztah bude fungovat na mikrolitry přesně."
+  age: "60-70. léta 20. století"
+  job: "makám v labu"
+  images:
+    - "pipetmanl.jpg"
+    - "pipetman2.jpg"
+    - "pipetman3.jpg"
+
+- name: "Mikrotitrační destička"
+  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu v ELISA, enzymových testech i spektrofotometrii. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád/a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
+  age: "1951"
+  job: "Destičkaření"
+  images:
+    - "mikrotitr1.jpg"
+
+- name: "Kávovar"
+  description: "Jsem velmi pracovitý, energetický a nevadí mi vstávat brzo ráno. Rád lidem v mém okolí zlepšuji náladu a samotného mě to dělá velice šťastným. Nemám rád instantní vztahy. PS. Nerad po sobě uklízím."
+  age: "1884"
+  job: "barista"
+  images:
+    - "kavovar1.jpg"    
+    - "kavovar2.jpg"    
+    - "kavovar3.jpg"    
     
+- name: "Varný kamínek"
+  description: "Jsem malý, ale šikovný. Přivedu tě k varu! Bojíš se, že jsem moc tvrdý? Se mnou si v bezpečí. Jakmile to mezi námi začne vřít, dám to jasně najevo."
+  age: "19. století"
+  job: "varné procesy"
+  images:
+    - "kaminek1.jpg"   
+    - "kaminek2.jpg"
+    
+- name: "Míchadlo"
+  description: "Rande se mnou bude kolotoč zážitků, nepostojím na jednom místě a jsem hodně akční. Sice toho hodně vydržím, ale když si nedáš pozor, proklouznu ti mezi prsty. Pokud mě ale budeš přitahovat, můžeme to spolu pořádně roztočit. Tak co? Necháš si ode mě zamotat hlavu?"
+  age: "1945"
+  job: "varné procesy"
+  images:
+    - "michadlo1.jpg"   
+    - "michadlo2.jpg"   
+    - "michadlo3.jpg"  
+
+- name: "Hasící přístroj"
+  description: "Tichý introvert v rohu. Přátelé říkají že jsem nerudný a chladný. Buď pro mě jediná/ý a nech mě uhasit tvou vášeň!"
+  age: "1818"
+  job: "BOZP asistent"
+  images:
+    - "hasicak1.jpg"   
+    - "hasicak2.jpg"   
+    - "hasicak3.jpg"    
+
+- name: "Oční sprcha"
+  description: "Nemusíš se moc snažit, abych začala stříkat, zato přestat bude chtít silnou vůli. Moc často si s nikým neužiju, většinou příjemnou zábavu zkazí brýle."
+  age: "60. - 70. léta 20. století"
+  job: "BOZP asistent"
+  images:
+    - "ocnisprcha1.jpg"   
+    - "ocnisprcha2.jpg"   
+
+- name: "Laboratorní brýle"
+  description: "Hledáš někoho kdo se ti posadí na nos a ochrání tě nejen v laborce? To jsem pro tebe ta pravá. Dej mi vědět a já se o zbytek postarám. Dostanu tě do míst, kde by tě beze mě vyhnali. Moc se ke mě nevaž, dlouho u jednoho nevydržím."
+  age: "19. století"
+  job: "BOZP asistent"
+  images:
+    - "bryle1.jpg"   
+    - "bryle2.jpg"   

@@ -22,9 +22,7 @@
   job: "makám v labu"
   images:
     - "Petri_1.jpg"
-    - "Petri_5.HEIC"
-    - "Petriho miska.HEIC"
-    - "petriho miska3.HEIC"
+
 
 - name: "Zkumavka"
   description: " #chci děti Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
@@ -40,16 +38,16 @@
   age: "polovina 19. století"
   job: "makám v labu"
   images:
-    - "Odmerna_banka_1.jpg"
-    - "Odmerna_banka_2.HEIC"
-    - "Odmerna_banka_3.HEIC"
+    - "banka1.jpg"
+    - "banka2.jpg"
+    - "banka3.jpg"
 
 - name: "Epinka"
   description: "Ahoj. Jsem malá, ale šikovná. Nemám moc ráda teplo, takže pozor na přílišnou vášeň. Hledám jen něco na jednu noc."
   age: "1963"
   job: "makám v labu"
   images:
-    - "Epinka_1.HEIC"
-    - "Epinka_2.HEIC"
-    - "Epinka_3.HEIC"
+    - "Epinka1.jpg"
+    - "Epinka2.jpg"
+    - "Epinka3.jpg"
     

@@ -30,7 +30,7 @@
     - "petrihomisky4.jpg"
 
 - name: "Zkumavka"
-  description: " #chci děti Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
+  description: "#chci děti. Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
   age: "18.století"
   job: "makám v labu"
   images:
@@ -39,7 +39,7 @@
     - "Zkumavka_4.jpg"
 
 - name: "Odměrná baňka"
-  description: "Čau. Mám sice dlouhý štíhlý krk ,ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas pokud se mnou neplánuješ zůstat na dlouhou dobu."
+  description: "Čau. Mám sice dlouhý štíhlý krk, ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas, pokud se mnou neplánuješ zůstat na dlouhou dobu."
   age: "polovina 19. století"
   job: "makám v labu"
   images:
@@ -57,7 +57,7 @@
     - "epinka3.jpg"
 
 - name: "Azbestová síťka"
-  description: "Odolám i tomu největšímu žáru ale rozhodně u toho nezůstanu vlažná. Pokud chceš přivést až k bodu varu, tak jsem ta pravá pro tebe. Pokud se ke mně budeš chovat dobře, užijeme si spolu hodně žhavé zábavy. Pokud se mě ale pokusíš zlomit, počítej že budu dost toxická."
+  description: "Odolám i tomu největšímu žáru, ale rozhodně u toho nezůstanu vlažná. Pokud chceš přivést až k bodu varu, tak jsem ta pravá pro tebe. Pokud se ke mně budeš chovat dobře, užijeme si spolu hodně žhavé zábavy. Pokud se mě ale pokusíš zlomit, počítej, že budu dost toxická."
   age: "1850"
   job: "makám v labu"
   images:
@@ -66,7 +66,7 @@
     - "azbest3.jpg"
 
 - name: "Balónek"
-  description: "Pod tlakem dělám divy. Pevně mě smáčkni a zažiješ zázraky. Jsem kompatibilní pouze se štíhlými protějšky. Hledám něco na občasné protažení. "
+  description: "Pod tlakem dělám divy. Pevně mě zmáčkni a zažiješ zázraky. Jsem kompatibilní pouze se štíhlými protějšky. Hledám něco na občasné protažení. "
   age: "začátek 20. století"
   job: "makám v labu"
   images:
@@ -84,7 +84,7 @@
     - "pipetman3.jpg"
 
 - name: "Mikrotitrační destička"
-  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu v ELISA, enzymových testech i spektrofotometrii. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád/a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
+  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu v ELISA, enzymových testech i spektrofotometrii. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád*a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
   age: "1951"
   job: "Destičkaření"
   images:
@@ -96,7 +96,7 @@
 - name: "Kávovar"
   description: "Jsem velmi pracovitý, energetický a nevadí mi vstávat brzo ráno. Rád lidem v mém okolí zlepšuji náladu a samotného mě to dělá velice šťastným. Nemám rád instantní vztahy. PS. Nerad po sobě uklízím."
   age: "1884"
-  job: "barista"
+  job: "Barista"
   images:
     - "kavovar1.jpg"    
     - "kavovar2.jpg"    
@@ -105,22 +105,22 @@
 - name: "Varný kamínek"
   description: "Jsem malý, ale šikovný. Přivedu tě k varu! Bojíš se, že jsem moc tvrdý? Se mnou si v bezpečí. Jakmile to mezi námi začne vřít, dám to jasně najevo."
   age: "19. století"
-  job: "varné procesy"
+  job: "Varné procesy"
   images:
     - "kaminek1.jpg"   
     - "kaminek2.jpg"
     
 - name: "Míchadlo"
-  description: "Rande se mnou bude kolotoč zážitků, nepostojím na jednom místě a jsem hodně akční. Sice toho hodně vydržím, ale když si nedáš pozor, proklouznu ti mezi prsty. Pokud mě ale budeš přitahovat, můžeme to spolu pořádně roztočit. Tak co? Necháš si ode mě zamotat hlavu?"
+  description: "Rande se mnou bude kolotoč zážitků. Nepostojím na jednom místě a jsem hodně akční. Sice toho hodně vydržím, ale když si nedáš pozor, proklouznu ti mezi prsty. Pokud mě ale budeš přitahovat, můžeme to spolu pořádně roztočit. Tak co? Necháš si ode mě zamotat hlavu?"
   age: "1945"
-  job: "varné procesy"
+  job: "Varné procesy"
   images:
     - "michadlo1.jpg"   
     - "michadlo2.jpg"   
     - "michadlo3.jpg"  
 
 - name: "Hasící přístroj"
-  description: "Tichý introvert v rohu. Přátelé říkají že jsem nerudný a chladný. Buď pro mě jediná/ý a nech mě uhasit tvou vášeň!"
+  description: "Tichý introvert v rohu. Přátelé říkají, že jsem nerudný a chladný. Buď pro mě jediná*ý a nech mě uhasit tvou vášeň!"
   age: "1818"
   job: "BOZP asistent"
   images:
@@ -129,7 +129,7 @@
     - "hasicak3.jpg"    
 
 - name: "Oční sprcha"
-  description: "Nemusíš se moc snažit, abych začala stříkat, zato přestat bude chtít silnou vůli. Moc často si s nikým neužiju, většinou příjemnou zábavu zkazí brýle."
+  description: "Nemusíš se moc snažit, abych začala stříkat, zato přestat bude chtít trochu cviku. Moc často si s nikým neužiju, většinou příjemnou zábavu zkazí brýle."
   age: "60. - 70. léta 20. století"
   job: "BOZP asistent"
   images:
@@ -137,7 +137,7 @@
     - "ocnisprcha2.jpg"   
 
 - name: "Laboratorní brýle"
-  description: "Hledáš někoho kdo se ti posadí na nos a ochrání tě nejen v laborce? To jsem pro tebe ta pravá. Dej mi vědět a já se o zbytek postarám. Dostanu tě do míst, kde by tě beze mě vyhnali. Moc se ke mě nevaž, dlouho u jednoho nevydržím."
+  description: "Hledáš někoho kdo se ti posadí na nos a ochrání tě nejen v laborce? To jsme pro tebe ty pravé. Dej nám vědět a my se o zbytek postaráme. Dostaneme tě do míst, kde by tě bez nás vyhnali. Moc se k nám ale nevaž, dlouho u jednoho nevydržím."
   age: "19. století"
   job: "BOZP asistent"
   images:
@@ -145,7 +145,7 @@
     - "bryle2.jpg"   
 
 - name: "Byreta"
-  description: "Zdravím. Pokud máš rád/a štíhlé a vysoké dámy dávej pozor. Jsem náročná a přesná. Pokud to se mnou zvládneš, odměním tě přesnými výsledky a barevnou změnou. Chci někoho kdo o mě bude pečovat a nezahodí mě po první noci."
+  description: "Zdravím. Pokud máš rád*a štíhlé a vysoké dámy dávej pozor. Jsem náročná a přesná. Pokud to se mnou zvládneš, odměním tě přesnými výsledky a barevnou změnou. Chci někoho, kdo o mě bude pečovat a nezahodí mě po první noci."
   age: "1845"
   job: "makám v labu"
   images:
@@ -154,21 +154,21 @@
     - "byreta3.jpg"
 
 - name: "Titrační baňka"
-  description: "Líbí se ti mé krásné oblé křivky a objemnější spodní polovina?Tak neváhej a swipe doprava. Můžeme si spolu užít den analytické chemie, časem tě možná představím kamarádce byretě a to potom bude jízda."
+  description: "Líbí se ti mé krásné oblé křivky a objemnější spodní polovina? Tak neváhej a swipe doprava. Můžeme si spolu užít den analytické chemie, časem tě možná představím kamarádce byretě, a to potom bude jízda!"
   age: "1845"
   job: "makám v labu"
   images:
     - "titrbanka1.jpg"   
 
 - name: "Vialka"
-  description: "Možná jsem rozměrem malý, ale mám velkou duši. Jsem šikovný, pracovitý a zodpovědný – pořád sebou nosím gumu."
+  description: "Možná jsem rozměrem malá, ale mám velkou duši. Jsem šikovná, pracovitá a zodpovědná – pořád sebou nosím gumu."
   age: "1930"
   job: "makám v labu"
   images:
     - "vialky1.jpg"   
 
 - name: "Alonž"
-  description: "Máš rád ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
+  description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
   age: "17. - 18. století"
   job: "destilační procesy"
   images:
@@ -177,14 +177,14 @@
 - name: "Třecí miska s tloučkem"
   description: "Hledáme kamarády, kteří s námi budou zkoušet nové věci. Pouze nezávazně. Rozdrtíme vše co jde, ale budeš muset zabrat."
   age: "starověk"
-  job: "drtiči"
+  job: "Drtiči"
   images:
     - "trecimiska1.jpg"   
     - "trecimiska2.jpg"   
     - "trecimiska3.jpg"   
 
 - name: "Chladič"
-  description: "Občas ti můžu připadat jako studený čumák, ale na něco to prostě chce chladnou hlavu. Funguji dobře i pod tlakem ale pokud to budeš přehánět s temperamentem, tak budu muset upustit páru. Páry jsou mým potěšením… nechceš ty být se mnou v páru?"
+  description: "Občas ti můžu připadat jako studený čumák, ale na něco to prostě chce chladnou hlavu. Funguji dobře i pod tlakem, ale pokud to budeš přehánět s temperamentem, tak budu muset upustit páru. Páry jsou mým potěšením… nechceš ty být se mnou v páru?"
   age: "30. léta 20. století"
   job: "chladírenství"
   images:
@@ -192,7 +192,7 @@
     - "chladic1.jpg"   
     - "chladic2.jpg"   
 
-- name: "Talková lahev"
+- name: "Tlaková lahev"
   description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
   age: "1832"
   job: "kde se dá"
@@ -202,9 +202,9 @@
     - "lahev3.jpg"   
 
 - name: "Trojnožka"
-  description: ""
-  age: ""
-  job: ""
+  description: "Na stole jsem roztažená a zkoušejí to na mě různé průměry. Jsem stabilní a hledám někoho, kdo do mě přesně sedne. Jsi to zrovna ty? Swipni doprava a podržím tě v horku i chladu."
+  age: "19.století"
+  job: "žhavý asistent"
   images:
     - "trojnozka1.jpg"   
     - "trojnozka2.jpg"   
@@ -218,7 +218,7 @@
     - ""  
 
 - name: "Kádinka"
-  description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu! <3"
+  description: "Jsi často na dně? To to jsi ten/ta pravý/á pro mě. Díky spodku jsem pevná, stabilní, ale pro tvrďáky křehká. Se studeným se orosím, ale nepohrdnu i horku nebo žáru."
   age: "19. století"
   job: "záhřevy všeho druhu"
   images:

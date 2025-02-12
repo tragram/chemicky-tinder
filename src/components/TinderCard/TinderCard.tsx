@@ -24,12 +24,12 @@ type SwipeDirection = null | "left" | "right";
 const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     return (
         <div className={cn("absolute pointer-events-none bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{
-            opacity: visibility, 
+            opacity: visibility,
             backgroundColor: colorClassName + "50"
 
         }}>
             <div className={cn("absolute top-16 border-8 p-2 rounded-3xl font-black text-xl scale-150 stamp", colorClassName, className)}
-                style={{ color: colorClassName, borderColor:colorClassName }}
+                style={{ color: colorClassName, borderColor: colorClassName }}
             >
                 {children}
             </div>
@@ -132,12 +132,12 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 </div>
             </div>
 
-            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-20" >
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+            <div className="absolute -bottom-5 midh:-bottom-6 tall:-bottom-10 left-0 right-0 flex justify-center gap-4 tall:gap-12 z-20" >
+                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
                     style={{ backgroundColor: NOPE_COLOR }}
                 >
                     <ThumbsDown
-                        size={24}
+                        className="tall:h-8 tall:w-8"
                         color="white"
                         onClick={() => {
                             animateSwipe("left", -1);
@@ -145,12 +145,12 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                         }}
                     />
                 </div>
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
 
                     style={{ backgroundColor: LIKE_COLOR }}
                 >
                     <Heart
-                        size={24}
+                        className="tall:h-8 tall:w-8"
                         color="white"
                         onClick={() => {
                             animateSwipe("right", 1);

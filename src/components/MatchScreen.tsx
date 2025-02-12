@@ -64,9 +64,9 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
         >
             <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
-            <div className="flex items-center justify-center mb-8 w-full gap-8">
+            <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
                 <div
-                    className="w-[20%] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[30%] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
@@ -75,7 +75,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 />
                 <Heart className="text-primary h-12 w-12 md:w-16 md:h-16" />
                 <div
-                    className="w-[20%] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[30%] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${profile.images[0]})`,
                         backgroundSize: 'cover',

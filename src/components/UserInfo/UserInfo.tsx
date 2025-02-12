@@ -65,18 +65,18 @@ export default function CollapsibleProfileCard({
         >
             <CardContent
                 ref={contentRef}
-                className={cn("p-2 px-6 transition-all bg-primary/5 duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start" : "p-16")}
+                className={cn("p-2 px-6 transition-all bg-primary/5 duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start" : "p-16 content-center")}
             >
                 <div
                     className={cn(
-                        "flex transition-all duration-500 ease-in-out items-center",
+                        "flex flex-col transition-all duration-500 ease-in-out items-center",
                         isCollapsed ? "flex-row" : "flex-col"
                     )}
                 >
                     <div
                         className={cn(
-                            "transition-all duration-500 ease-in-out",
-                            isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[50dvh] h-[50dvh] mb-6"
+                            "transition-all text-center duration-500 ease-in-out",
+                            isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[calc(min(50dvh,70dvw)] h-[calc(min(50dvh,70dvw)] mb-6"
                         )}
                     >
                         <AvatarUpload
@@ -84,11 +84,13 @@ export default function CollapsibleProfileCard({
                             onUpload={setAvatarUrl}
                             isCollapsed={isCollapsed}
                         />
+                        <div className={cn("font-semibold mt-2",isCollapsed?"hidden":"visible")}>Avatar</div>
                     </div>
+
 
                     <div
                         className={cn(
-                            "transition-all duration-500 ease-in-out self-bottom",
+                            "transition-all duration-500 ease-in-out",
                             isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
                         )}
                     >

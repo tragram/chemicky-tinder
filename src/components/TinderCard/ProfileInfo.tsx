@@ -1,7 +1,7 @@
 import React, { useState, useRef, ForwardedRef, act } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
-import { ArrowLeft, BriefcaseBusiness, Heart, Quote, ThumbsDown } from "lucide-react";
+import { ArrowLeft, BriefcaseBusiness, Heart, Quote, ThumbsDown, Timer } from "lucide-react";
 import { TinderProfile } from "@/types";
 import { cn } from "clsx-for-tailwind";
 
@@ -10,22 +10,28 @@ interface ProfileInfoProps {
     className: string;
 }
 
-const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile,className }) => {
+const ProfileDetail: React.FC<{ icon: React.ElementType; text: string; isDescription?: boolean }> = ({ icon: Icon, text, isDescription }) => {
     return (
-        <div className={cn("flex flex-col flex-shrink short:p-8 p-4 md:p-4 w-full h-fit text-white midh:gap-2 pointer-events-none z-20 bg-gradient-to-b from-transparent via-black/60 via-40% to-black",className)}>
-            <div className="flex flex-row gap-4 md:gap-8 mt-[20%]">
-                <h2 className={cn("text-lg md:text-xl lg:text-2xl font-bold", "text-white")}>{profile.name}</h2>
-                <h3 className={cn("h-fit text-base md:text-lg self-end font-semibold", "text-primary")}>{profile.age}</h3>
+        <div className={cn("flex items-start gap-2")}>
+            <div>
+                <Icon className="text-primary" size={16} />
             </div>
+            <p className={cn("text-sm md:text-base lg:text-lg", isDescription ? "font-semibold" : "font-bold")}>{text}</p>
+        </div>
+    );
+};
 
-            <div className="flex gap-1 text-md font-bold items-center">
-                <BriefcaseBusiness size={16} className="text-primary" />{profile.job}
-            </div>
 
-            <div className="flex gap-1 text-xs midh:md:text-sm font-semibold items-start max-h-[10%]">
-                <div><Quote size={16} className="text-primary" /></div>
-                <p>{profile.description}</p>
-            </div>
+const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile, className }) => {
+    return (
+        <div className={cn("flex flex-col flex-shrink p-4 pb-8 tall:lg:p-8 w-full h-fit text-white gap-1 tall:lg:gap-2 pointer-events-none z-20 bg-gradient-to-b from-transparent via-black/70 via-40% to-black", className)}>
+
+            <h2 className={cn("text-lg tall:md:text-2xl font-extrabold mt-[15%]", "text-primary")}>{profile.name}
+            </h2>
+
+            <ProfileDetail icon={Timer} text={profile.age} />
+            <ProfileDetail icon={BriefcaseBusiness} text={profile.job} />
+            <ProfileDetail icon={Quote} text={profile.description} isDescription />
         </div>
     );
 };

@@ -22,12 +22,11 @@
   job: "makám v labu"
   images:
     - "Petri_1.jpg"
-    - "petriho miska.jpg"
-    - "petrihomiska 2.jpg"
     - "petrihomiska1.jpg"
     - "petrihomiska2.jpg"
     - "petrihomiska3.jpg"
     - "petrihomisky4.jpg"
+    - "petrihomisky5.jpg"
 
 - name: "Zkumavka"
   description: "#chci děti. Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."

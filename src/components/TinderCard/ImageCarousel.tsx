@@ -7,12 +7,11 @@ import { cn } from "clsx-for-tailwind";
 
 interface ImageCarouselProps {
     profile: TinderProfile;
-    cardRef: ForwardedRef
+    cardRef: ForwardedRef<HTMLDivElement>
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
     const [currentImage, setCurrentImage] = useState(0);
-    console.log(cardRef.current?.getBoundingClientRect())
     const handleTap = (e) => {
         const { clientX } = e;
         const rect = cardRef.current?.getBoundingClientRect();

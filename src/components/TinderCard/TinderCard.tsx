@@ -14,7 +14,7 @@ const NOPE_COLOR_CLS = "bg-red-600";
 
 interface TinderCardProps {
     profile: TinderProfile;
-    active: boolean;
+    cardActive: boolean;
     zIndex: number;
     onSwipe: (direction: string, profile: TinderProfile) => void;
 }
@@ -31,7 +31,7 @@ const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     )
 }
 
-const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwipe }) => {
+const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, onSwipe }) => {
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
     const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
@@ -42,22 +42,9 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
         x: 0,
         y: 0,
         rotate: 0,
-        scale: active ? 1 : 0.9,
-        config: { tension: 300, friction: 20 },
+        scale: cardActive ? 1.1 : 0.9,
+        config: { tension: 200, friction: 10 },
     }));
-
-    // Add a spring for the active state transition
-    const [{ activeScale }, activeApi] = useSpring(() => ({
-        activeScale: active ? 1 : 0.9,
-        config: { tension: 300, friction: 20 },
-    }));
-
-    // Update the scale when active state changes
-    React.useEffect(() => {
-        activeApi.start({
-            activeScale: active ? 1 : 0.9,
-        });
-    }, [active, activeApi]);
 
     const animateSwipe = (swipeDirection: SwipeDirection, dx) => {
         const outX = swipeDirection === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH;
@@ -69,14 +56,15 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
     }
 
     const bindCard = useDrag(
-        ({ active, movement: [mx, my], direction: [dx], velocity, tap }) => {
+        ({ active, movement: [mx, my], direction: [dx], tap }) => {
             if (tap) return;
+            console.log(active)
             setDragActive(active);
             const swipeDirection = mx > 0 ? "right" : "left";
             setSwipeDirection(swipeDirection);
             const absMx = Math.abs(mx);
             const tagOpacity = absMx / SWIPE_THRESHOLD;
-            
+
             if (swipeDirection == "right") {
                 setLikeVisibility(tagOpacity);
                 setNopeVisibility(0);
@@ -99,8 +87,8 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 api.start({
                     x: active ? mx : 0,
                     y: active ? my : 0,
+                    scale: active ? 1.1 : 1,
                     rotate: active ? mx * 0.1 : 0,
-                    scale: active ? 1.1 : activeScale.get(),
                 });
             }
         },
@@ -115,13 +103,13 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 x,
                 y,
                 rotate,
-                scale: activeScale.to(s => s * scale.get()),
+                // scale: activeScale.to(s => s * scale.get()),
                 touchAction: "none",
                 zIndex: dragActive ? 50 : zIndex,
             }}
-            className="absolute aspect-[2/3] h-[90%] max-w-[95%] rounded-3xl"
+            className={cn("absolute aspect-[2/3] h-[90%] max-w-[95%] rounded-3xl", cardActive ? "" : "pointer-events-none")}
         >
-            <div className={cn("h-full w-full transition-all rounded-3xl relative overflow-hidden bg-white", active ? "" : "blur-sm")}>
+            <div className={cn("h-full w-full transition-all rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className="right-8">
@@ -132,30 +120,30 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute pointer-events-none inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0" />
-
-                <ProfileInfo profile={profile} />
+                <div className="absolute flex items-end top-0 overflow-y-scroll h-full pointer-events-none">
+                    <ProfileInfo profile={profile} className="max-h-[60%]" />
+                </div>
             </div>
 
-            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-10">
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", NOPE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
-                    <ThumbsDown 
-                        size={24} 
-                        color="white" 
+            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-20">
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", NOPE_COLOR_CLS, cardActive ? "opacity-100" : "opacity-0")}>
+                    <ThumbsDown
+                        size={24}
+                        color="white"
                         onClick={() => {
                             animateSwipe("left", -1);
                             onSwipe("left", profile);
-                        }} 
+                        }}
                     />
                 </div>
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", LIKE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
-                    <Heart 
-                        size={24} 
-                        color="white" 
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", LIKE_COLOR_CLS, cardActive ? "opacity-100" : "opacity-0")}>
+                    <Heart
+                        size={24}
+                        color="white"
                         onClick={() => {
                             animateSwipe("right", 1);
                             onSwipe("right", profile);
-                        }} 
+                        }}
                     />
                 </div>
             </div>

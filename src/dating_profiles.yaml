@@ -1,6 +1,6 @@
 - name: "Pan Odměrný Válec"
   description: "Jsem odměrný válec, ale říkej mi prostě Válec. Hledám někoho, kdo ocení mou transparentní povahu a nebude mě plnit toxickými látkami. Moje ideální rande? Něco tekutého, trocha chemie a spousta měření, jestli to mezi námi klapne."
-  age: "18. - 19. století"
+  age: "18. - 19. stol."
   job: "Tekutinový analytik"
   images:
     - "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Measuring_cylinder_hg.jpg/800px-Measuring_cylinder_hg.jpg"
@@ -31,7 +31,7 @@
 
 - name: "Zkumavka"
   description: "#chci děti. Malá, úzká, tepluvzdorná. Po použití mě pořádně vezmi štětkou."
-  age: "18.století"
+  age: "18. stol."
   job: "makám v labu"
   images:
     - "Zkumavka_2.jpg"
@@ -40,7 +40,7 @@
 
 - name: "Odměrná baňka"
   description: "Čau. Mám sice dlouhý štíhlý krk, ale jen tak lehce mě nezískáš. Hledám nového prince, jenž zacpe díru v mém životě. Spolu vyrobíme přesné zásobní roztoky a vzorky. Neztrácej můj čas, pokud se mnou neplánuješ zůstat na dlouhou dobu."
-  age: "polovina 19. století"
+  age: "polovina 19. stol."
   job: "makám v labu"
   images:
     - "banka1.jpg"
@@ -67,7 +67,7 @@
 
 - name: "Balónek"
   description: "Pod tlakem dělám divy. Pevně mě zmáčkni a zažiješ zázraky. Jsem kompatibilní pouze se štíhlými protějšky. Hledám něco na občasné protažení. "
-  age: "začátek 20. století"
+  age: "začátek 20. stol."
   job: "makám v labu"
   images:
     - "balonekl.jpg"
@@ -76,7 +76,7 @@
 
 - name: "Pipetman"
   description: "Jsem precizní a spolehlivý. Jen vážné vztahy. Dokážu odhalit i nejjemnější manipulace. Pokud víš, jak mě správně zmáčknout, slibuji, že náš vztah bude fungovat na mikrolitry přesně."
-  age: "60-70. léta 20. století"
+  age: "60-70. léta 20. stol."
   job: "makám v labu"
   images:
     - "pipetmanl.jpg"
@@ -104,7 +104,7 @@
     
 - name: "Varný kamínek"
   description: "Jsem malý, ale šikovný. Přivedu tě k varu! Bojíš se, že jsem moc tvrdý? Se mnou si v bezpečí. Jakmile to mezi námi začne vřít, dám to jasně najevo."
-  age: "19. století"
+  age: "19. stol."
   job: "Varné procesy"
   images:
     - "kaminek1.jpg"   
@@ -130,7 +130,7 @@
 
 - name: "Oční sprcha"
   description: "Nemusíš se moc snažit, abych začala stříkat, zato přestat bude chtít trochu cviku. Moc často si s nikým neužiju, většinou příjemnou zábavu zkazí brýle."
-  age: "60. - 70. léta 20. století"
+  age: "60. - 70. léta 20. stol."
   job: "BOZP asistent"
   images:
     - "ocnisprcha1.jpg"   
@@ -138,7 +138,7 @@
 
 - name: "Laboratorní brýle"
   description: "Hledáš někoho kdo se ti posadí na nos a ochrání tě nejen v laborce? To jsme pro tebe ty pravé. Dej nám vědět a my se o zbytek postaráme. Dostaneme tě do míst, kde by tě bez nás vyhnali. Moc se k nám ale nevaž, dlouho u jednoho nevydržím."
-  age: "19. století"
+  age: "19. stol."
   job: "BOZP asistent"
   images:
     - "bryle1.jpg"   
@@ -169,7 +169,7 @@
 
 - name: "Alonž"
   description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
-  age: "17. - 18. století"
+  age: "17. - 18. stol."
   job: "destilační procesy"
   images:
     - "alonz1.jpg"   
@@ -185,7 +185,7 @@
 
 - name: "Chladič"
   description: "Občas ti můžu připadat jako studený čumák, ale na něco to prostě chce chladnou hlavu. Funguji dobře i pod tlakem, ale pokud to budeš přehánět s temperamentem, tak budu muset upustit páru. Páry jsou mým potěšením… nechceš ty být se mnou v páru?"
-  age: "30. léta 20. století"
+  age: "30. léta 20. stol."
   job: "chladírenství"
   images:
     - "Cleisenuv_chladic.jpg"   
@@ -203,7 +203,7 @@
 
 - name: "Trojnožka"
   description: "Na stole jsem roztažená a zkoušejí to na mě různé průměry. Jsem stabilní a hledám někoho, kdo do mě přesně sedne. Jsi to zrovna ty? Swipni doprava a podržím tě v horku i chladu."
-  age: "19.století"
+  age: "19.stol."
   job: "žhavý asistent"
   images:
     - "trojnozka1.jpg"   
@@ -212,14 +212,14 @@
 
 - name: "Kahan"
   description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu! <3"
-  age: "19. století"
+  age: "19. stol."
   job: "záhřevy všeho druhu"
   images:
     - ""  
 
 - name: "Kádinka"
   description: "Jsi často na dně? To to jsi ten/ta pravý/á pro mě. Díky spodku jsem pevná, stabilní, ale pro tvrďáky křehká. Se studeným se orosím, ale nepohrdnu i horku nebo žáru."
-  age: "19. století"
+  age: "19. stol."
   job: "záhřevy všeho druhu"
   images:
     - ""  

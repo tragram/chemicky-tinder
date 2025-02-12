@@ -27,7 +27,7 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
                 <TinderCard
                     key={index}
                     zIndex={profiles.length - index}
-                    active={activeCard === index}
+                    cardActive={activeCard === index}
                     profile={profile}
                     onSwipe={handleSwipe}
                 />

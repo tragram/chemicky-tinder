@@ -7,10 +7,11 @@ import { cn } from "clsx-for-tailwind";
 
 interface ImageCarouselProps {
     profile: TinderProfile;
-    cardRef: ForwardedRef<HTMLDivElement>
+    cardRef: ForwardedRef<HTMLDivElement>;
+    className: string;
 }
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef, className }) => {
     const [currentImage, setCurrentImage] = useState(0);
     const handleTap = (e) => {
         const { clientX } = e;
@@ -39,7 +40,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
             </div>
             < div
                 onClick={handleTap}
-                className="relative w-full h-full overflow-hidden z-5"
+                className={cn("relative w-full h-full overflow-hidden z-5", className)}
             >
                 <div
                     className="flex w-full h-full"

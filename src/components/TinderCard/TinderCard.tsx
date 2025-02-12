@@ -9,8 +9,8 @@ import ProfileInfo from "./ProfileInfo";
 
 const SWIPE_THRESHOLD = 150;
 const SCREEN_WIDTH = window.innerWidth;
-const LIKE_COLOR_CLS = "bg-green-600";
-const NOPE_COLOR_CLS = "bg-red-600";
+const LIKE_COLOR_CLS = "bg-primary";
+const NOPE_COLOR_CLS = "bg-[#0065BD]";
 
 interface TinderCardProps {
     profile: TinderProfile;
@@ -35,7 +35,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
     const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
-    const [dragActive, setDragActive] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({
@@ -62,8 +61,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
     const bindCard = useDrag(
         ({ active, movement: [mx, my], direction: [dx], tap }) => {
             if (tap) return;
-            console.log(active)
-            setDragActive(active);
             const swipeDirection = mx > 0 ? "right" : "left";
             setSwipeDirection(swipeDirection);
             const absMx = Math.abs(mx);
@@ -111,10 +108,11 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 touchAction: "none",
                 zIndex: zIndex,
             }}
-            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", cardActive ? "" : "pointer-events-none")}
+            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", cardActive ? "" : "")}
         >
-            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
-                <ImageCarousel profile={profile} cardRef={cardRef} />
+            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}
+                onClick={() => console.log("click")}>
+                <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className="right-8">
                     LIKE
@@ -124,7 +122,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute flex items-end top-0 w-full h-full">
+                <div className="absolute flex items-end top-0 w-full h-full z-0 pointer-events-none">
                     <ProfileInfo profile={profile} className="max-h-[60%]" />
                 </div>
             </div>

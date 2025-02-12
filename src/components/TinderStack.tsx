@@ -29,7 +29,7 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
     }, [swipedRight, activeCard]);
     return (
         <div className="relative w-full h-full flex justify-center items-center overscroll-contain">
-            {profiles.map((profile, index) => (
+            {profiles.sort(() => Math.random() - 0.5).map((profile, index) => (
                 <TinderCard
                     key={index}
                     zIndex={profiles.length - index}

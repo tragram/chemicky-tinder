@@ -119,7 +119,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 touchAction: "none",
                 zIndex: dragActive ? 50 : zIndex,
             }}
-            className="absolute aspect-[2/3] h-[90%] lg:h-[80%] rounded-3xl max-w-full"
+            className="absolute aspect-[2/3] h-[90%] max-w-[95%] rounded-3xl"
         >
             <div className={cn("h-full w-full transition-all rounded-3xl relative overflow-hidden bg-white", active ? "" : "blur-sm")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
@@ -137,8 +137,8 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 <ProfileInfo profile={profile} />
             </div>
 
-            <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-4 z-10">
-                <div className={cn("flex items-center justify-center w-12 h-12 rounded-full", NOPE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
+            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-10">
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", NOPE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
                     <ThumbsDown 
                         size={24} 
                         color="white" 
@@ -148,7 +148,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                         }} 
                     />
                 </div>
-                <div className={cn("flex items-center justify-center w-12 h-12 rounded-full", LIKE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", LIKE_COLOR_CLS, active ? "opacity-100" : "opacity-0")}>
                     <Heart 
                         size={24} 
                         color="white" 

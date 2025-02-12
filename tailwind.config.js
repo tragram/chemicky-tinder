@@ -5,10 +5,10 @@ module.exports = {
 		extend: {
 			screens: {
 				short: {
-					raw: '(max-height:600px)',
+					raw: '(min-height:400px)',
 				},
 				midh: {
-					raw: '(max-height:1000px)',
+					raw: '(min-height:600px)',
 				},
 				tall: {
 					raw: '(min-height:1000px)'

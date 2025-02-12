@@ -97,9 +97,7 @@
   age: "1884"
   job: "Barista"
   images:
-    - "kavovar1.jpg"    
-    - "kavovar2.jpg"    
-    - "kavovar3.jpg"    
+    - "kavovar1.jpg"  
     
 - name: "Varný kamínek"
   description: "Jsem malý, ale šikovný. Přivedu tě k varu! Bojíš se, že jsem moc tvrdý? Se mnou si v bezpečí. Jakmile to mezi námi začne vřít, dám to jasně najevo."

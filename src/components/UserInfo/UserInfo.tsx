@@ -66,7 +66,7 @@ export default function CollapsibleProfileCard({
     <Card
       className={cn(
         "rounded-none md:rounded-3xl overflow-hidden bg-white border-primary border-0  md:border-4 transition-all duration-500 ease-in-out shadow-lg",
-        isCollapsed ? "w-full h-fit md:w-[50vh] border-t-4" : "w-full h-full"
+        isCollapsed ? "w-full h-fit md:w-[50dvh] border-t-4" : "w-full h-full"
       )}
     //   style={{
     //     minHeight: isCollapsed ? "4rem" : `${contentHeight}px`,

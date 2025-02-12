@@ -117,7 +117,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 touchAction: "none",
                 zIndex: dragActive ? 50 : zIndex
             }}
-            className={cn("absolute aspect-[2/3] h-[75vh] rounded-3xl max-w-full bg-white ", active ? "shadow-lg" : "scale-90")}
+            className={cn("absolute aspect-[2/3] h-[90%] lg:h-[80%] rounded-3xl max-w-full bg-white ", active ? "shadow-lg" : "scale-90")}
         >
             <div className={cn("h-full transition-all  rounded-3xl relative overflow-hidden ", active ? "" : "scale-90 blur-sm ")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
@@ -131,7 +131,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0 "></div>
 
                 <ProfileInfo profile={profile} />
             </div>

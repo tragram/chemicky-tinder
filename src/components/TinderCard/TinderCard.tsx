@@ -9,8 +9,8 @@ import ProfileInfo from "./ProfileInfo";
 
 const SWIPE_THRESHOLD = 150;
 const SCREEN_WIDTH = window.innerWidth;
-const LIKE_COLOR_CLS = "bg-[#f04f23]";
-const NOPE_COLOR_CLS = "bg-[#0065BD]";
+const LIKE_COLOR = "#f04f23";
+const NOPE_COLOR = "#0065BD";
 
 interface TinderCardProps {
     profile: TinderProfile;
@@ -23,8 +23,14 @@ type SwipeDirection = null | "left" | "right";
 
 const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     return (
-        <div className={cn("absolute pointer-events-none bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{ opacity: visibility }}>
-            <div className={cn("absolute top-8 border-2 p-2 rounded-full font-bold", colorClassName, className)}>
+        <div className={cn("absolute pointer-events-none bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{
+            opacity: visibility, 
+            backgroundColor: colorClassName + "50"
+
+        }}>
+            <div className={cn("absolute top-16 border-8 p-2 rounded-3xl font-black text-xl scale-150 stamp", colorClassName, className)}
+                style={{ color: colorClassName, borderColor:colorClassName }}
+            >
                 {children}
             </div>
         </div>
@@ -114,11 +120,11 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 onClick={() => console.log("click")}>
                 <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />
 
-                <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className="right-8">
+                <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR} className="left-16 -rotate-[30deg]">
                     LIKE
                 </SwipeOverlay>
 
-                <SwipeOverlay visibility={nopeVisibility} colorClassName={NOPE_COLOR_CLS} className="left-8">
+                <SwipeOverlay visibility={nopeVisibility} colorClassName={NOPE_COLOR} className="right-16 rotate-[30deg]">
                     NOPE
                 </SwipeOverlay>
 
@@ -128,7 +134,9 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
             </div>
 
             <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-20" >
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", NOPE_COLOR_CLS, cardActive ? "opacity-100" : "opacity-0")}>
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+                    style={{ backgroundColor: NOPE_COLOR }}
+                >
                     <ThumbsDown
                         size={24}
                         color="white"
@@ -138,7 +146,10 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                         }}
                     />
                 </div>
-                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", LIKE_COLOR_CLS, cardActive ? "opacity-100" : "opacity-0")}>
+                <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+
+                    style={{ backgroundColor: LIKE_COLOR }}
+                >
                     <Heart
                         size={24}
                         color="white"

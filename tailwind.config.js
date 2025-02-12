@@ -3,6 +3,17 @@ module.exports = {
 	content: ["./index.html", "./src/layouts/**/*.{js,ts,jsx,tsx,mdx}", "./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
+			screens: {
+				short: {
+					raw: '(max-height:600px)',
+				},
+				midh: {
+					raw: '(max-height:1000px)',
+				},
+				tall: {
+					raw: '(min-height:1000px)'
+				}
+			},
 			fontFamily: {
 				display: 'Poppins, ui-sans-serif',
 				heading: 'Sora, ui-serif',

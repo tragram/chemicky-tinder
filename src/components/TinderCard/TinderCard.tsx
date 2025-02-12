@@ -9,7 +9,7 @@ import ProfileInfo from "./ProfileInfo";
 
 const SWIPE_THRESHOLD = 150;
 const SCREEN_WIDTH = window.innerWidth;
-const LIKE_COLOR_CLS = "bg-primary";
+const LIKE_COLOR_CLS = "bg-[#f04f23]";
 const NOPE_COLOR_CLS = "bg-[#0065BD]";
 
 interface TinderCardProps {
@@ -24,7 +24,7 @@ type SwipeDirection = null | "left" | "right";
 const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     return (
         <div className={cn("absolute pointer-events-none bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{ opacity: visibility }}>
-            <div className={cn("absolute top-8 border-2  p-2 rounded-full font-bold", colorClassName, className)}>
+            <div className={cn("absolute top-8 border-2 p-2 rounded-full font-bold", colorClassName, className)}>
                 {children}
             </div>
         </div>

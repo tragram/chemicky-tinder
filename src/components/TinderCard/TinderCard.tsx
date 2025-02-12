@@ -1,4 +1,4 @@
-import React, { useState, useRef, ForwardedRef, act } from "react";
+import React, { useState, useRef, ForwardedRef, act, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
 import { ArrowLeft, BriefcaseBusiness, Heart, Quote, ThumbsDown } from "lucide-react";
@@ -42,12 +42,16 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
         x: 0,
         y: 0,
         rotate: 0,
-        scale: cardActive ? 1.1 : 0.9,
-        config: { tension: 200, friction: 10 },
+        scale: 0.8,
+        config: { tension: 300, friction: 15 },
     }));
 
+    useEffect(() => {
+        if (cardActive) { api.start({ scale: 1 }) }
+    }, [cardActive])
+
     const animateSwipe = (swipeDirection: SwipeDirection, dx) => {
-        const outX = swipeDirection === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH;
+        const outX = swipeDirection === "right" ? 2 * SCREEN_WIDTH : -2 * SCREEN_WIDTH;
         api.start({
             x: outX,
             rotate: dx * 0.1,
@@ -77,7 +81,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 animateSwipe(swipeDirection, dx);
                 setTimeout(() => {
                     onSwipe(swipeDirection, profile);
-                }, 300);
+                }, 100);
             } else {
                 if (!active) {
                     setNopeVisibility(0);
@@ -87,7 +91,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 api.start({
                     x: active ? mx : 0,
                     y: active ? my : 0,
-                    scale: active ? 1.1 : 1,
+                    // scale: active ? 1.1 : 1,
                     rotate: active ? mx * 0.1 : 0,
                 });
             }
@@ -103,13 +107,13 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 x,
                 y,
                 rotate,
-                // scale: activeScale.to(s => s * scale.get()),
+                scale: scale,
                 touchAction: "none",
-                zIndex: dragActive ? 50 : zIndex,
+                zIndex: zIndex,
             }}
             className={cn("absolute aspect-[2/3] h-[90%] max-w-[95%] rounded-3xl", cardActive ? "" : "pointer-events-none")}
         >
-            <div className={cn("h-full w-full transition-all rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
+            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className="right-8">
@@ -120,7 +124,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute flex items-end top-0 overflow-y-scroll h-full pointer-events-none">
+                <div className="absolute flex items-end top-0 overflow-y-scroll w-full h-full pointer-events-none">
                     <ProfileInfo profile={profile} className="max-h-[60%]" />
                 </div>
             </div>

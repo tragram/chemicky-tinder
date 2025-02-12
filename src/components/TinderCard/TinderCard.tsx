@@ -116,8 +116,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
             }}
             className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", cardActive ? "" : "")}
         >
-            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}
-                onClick={() => console.log("click")}>
+            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
                 <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR} className="left-16 -rotate-[30deg]">

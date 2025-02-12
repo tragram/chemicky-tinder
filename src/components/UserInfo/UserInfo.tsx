@@ -25,21 +25,7 @@ export default function CollapsibleProfileCard({
     setIsCollapsed
 }: CollapsibleProfileCardProps) {
     const [isEditing, setIsEditing] = useState(false)
-    const [contentHeight, setContentHeight] = useState<number>(40)
     const contentRef = useRef<HTMLDivElement>(null)
-
-    // Update content height when content changes or collapse state changes
-    useEffect(() => {
-        const updateHeight = () => {
-            if (contentRef.current) {
-                setContentHeight(contentRef.current.scrollHeight)
-            }
-        }
-
-        updateHeight()
-        window.addEventListener('resize', updateHeight)
-        return () => window.removeEventListener('resize', updateHeight)
-    }, [name, avatarUrl, isCollapsed])
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value)
@@ -57,21 +43,29 @@ export default function CollapsibleProfileCard({
         setIsEditing(false)
     }
 
-    const toggleEditing = () => {
+    const toggleEditing = (e) => {
         if (isCollapsed) {
-            setIsEditing(!isEditing)
+            e.preventDefault();
+            const isEditingStart = isEditing;
+            setIsEditing(!isEditing);
+            if (!isEditingStart) {
+                const nameField = document.getElementById("name");
+                setTimeout(() => {
+                    nameField?.focus();
+                }, 10);
+            }
         }
     }
     return (
         <Card
             className={cn(
-                "rounded-none md:tall:rounded-3xl overflow-hidden bg-white border-primary border-0  md:tall:border-4 transition-all duration-500 ease-in-out shadow-lg",
-                isCollapsed ? "w-full h-fit md:tall:w-[50dvh] border-t-4" : "w-full h-full"
+                "rounded-none md:tall:rounded-3xl overflow-hidden bg-white border-primary border-0 md:tall:border-2 transition-all duration-500 ease-in-out shadow-lg",
+                isCollapsed ? "w-full h-fit md:tall:w-[calc((82dvh)*2/3-1em)] outline outline-primary outline-4" : "w-full h-full"
             )}
         >
             <CardContent
                 ref={contentRef}
-                className={cn("p-2 px-6 transition-all bg-primary/5 duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "" : "p-16")}
+                className={cn("p-2 px-6 transition-all bg-primary/5 duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start" : "p-16")}
             >
                 <div
                     className={cn(
@@ -82,7 +76,7 @@ export default function CollapsibleProfileCard({
                     <div
                         className={cn(
                             "transition-all duration-500 ease-in-out",
-                            isCollapsed ? "w-8 h-8 md:w-12 md:h-12 flex-shrink-0" : "w-[50vw] h-full mb-6"
+                            isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[50dvh] h-[50dvh] mb-6"
                         )}
                     >
                         <AvatarUpload
@@ -98,44 +92,41 @@ export default function CollapsibleProfileCard({
                             isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
                         )}
                     >
-                        {(!isCollapsed || isEditing) ? (
-                            <form
-                                onSubmit={handleSubmit}
-                                className=""
-                            >
-                                {!isCollapsed && <Label className="" htmlFor="name">Name</Label>}
-                                <div className="flex gap-4 h-full">
-                                    <Input
-                                        id="name"
-                                        placeholder="Nadějný chemik"
-                                        value={name}
-                                        onChange={handleNameChange}
-                                        className="flex-grow border-primary border-2 bg-white"
-                                    />
-                                    {isCollapsed && (
-                                        <Button type="submit" size="default">
-                                            Save
-                                        </Button>
-                                    )}
-                                </div>
+                        <form
+                            onSubmit={handleSubmit}
+                            className=""
+                        >
+                            {!isCollapsed && <Label className="" htmlFor="name">Name</Label>}
+                            <div className={cn("flex gap-4 h-full", !isCollapsed || isEditing ? "visible" : "hidden")}>
+                                <Input
+                                    id="name"
+                                    placeholder="Nadějný chemik"
+                                    value={name}
+                                    onChange={handleNameChange}
+                                    className="flex-grow border-primary border-2 bg-white"
+                                />
+                                {isCollapsed && (
+                                    <Button type="submit" size="default">
+                                        Save
+                                    </Button>
+                                )}
+                            </div>
 
-                                <Button
-                                    onClick={handleSubmit}
-                                    className={cn("w-full mt-2", isCollapsed && "hidden")}
-                                >
-                                    Submit
-                                </Button>
-                            </form>
-                        ) : (
-                            <button
-                                type="button"
-                                className="text-lg font-semibold flex items-center gap-2 w-full text-left"
-                                onClick={toggleEditing}
+                            <Button
+                                onClick={handleSubmit}
+                                className={cn("w-full mt-2", isCollapsed && "hidden")}
                             >
-                                <span className="truncate">{name}</span>
-                                <Pencil className="w-4 h-4 text-primary flex-shrink-0" />
-                            </button>
-                        )}
+                                Submit
+                            </Button>
+                        </form>
+                        <button
+                            type="button"
+                            className={cn("text-lg font-semibold flex items-center gap-2 w-full text-left", isCollapsed && !isEditing ? "visible" : "hidden")}
+                            onClick={toggleEditing}
+                        >
+                            <span className="truncate">{name}</span>
+                            <Pencil className="w-4 h-4 text-primary flex-shrink-0" />
+                        </button>
                     </div>
                 </div>
             </CardContent>

@@ -111,7 +111,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 touchAction: "none",
                 zIndex: zIndex,
             }}
-            className={cn("absolute aspect-[2/3] h-[90%] max-w-[95%] rounded-3xl", cardActive ? "" : "pointer-events-none")}
+            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", cardActive ? "" : "pointer-events-none")}
         >
             <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
@@ -124,12 +124,12 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute flex items-end top-0 overflow-y-scroll w-full h-full pointer-events-none">
+                <div className="absolute flex items-end top-0 w-full h-full">
                     <ProfileInfo profile={profile} className="max-h-[60%]" />
                 </div>
             </div>
 
-            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-20">
+            <div className="absolute -bottom-6 short:-bottom-5 left-0 right-0 flex justify-center gap-4 z-20" >
                 <div className={cn("flex items-center justify-center w-12 h-12 short:h-10 short:w-10 rounded-full", NOPE_COLOR_CLS, cardActive ? "opacity-100" : "opacity-0")}>
                     <ThumbsDown
                         size={24}

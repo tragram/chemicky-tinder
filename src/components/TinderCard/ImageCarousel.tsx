@@ -10,9 +10,6 @@ interface ImageCarouselProps {
     cardRef: ForwardedRef
 }
 
-// TODO: site-wide
-const VSCHT_RED = "#f04e23"
-
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
     const [currentImage, setCurrentImage] = useState(0);
 
@@ -35,7 +32,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
                     <div
                         key={index}
                         className={`w-[35px] h-1.5 rounded backdrop-blur-md ${currentImage === index
-                            ? `bg-[${VSCHT_RED}] bg-opacity-90`
+                            ? `bg-primary bg-opacity-90`
                             : `bg-[white] bg-opacity-50`
                             }`}
                     />

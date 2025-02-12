@@ -41,20 +41,20 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
 
     return (
         <Card
-            className={cn(`rounded-3xl overflow-hidden bg-white border-primary transition-all duration-1000 ease-in-out`,
-                isCollapsed ? "" : "aspect-[2/3] h-full w-full")}
+            className={cn(`rounded-3xl overflow-hidden bg-white border-primary border-4 transition-all duration-1000 ease-in-out shadow-lg`,
+                isCollapsed ? "" : "h-full w-full")}
             style={{
                 minHeight: isCollapsed ? "4rem" : (height ? `${height}px` : "40px"),
-                width: isCollapsed ? "calc(50vh)" : "100%" // Match TinderCard width when collapsed
+                width: isCollapsed ? "50vh" : "100%" // Match TinderCard width when collapsed
             }}
         >
-            <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
+            <CardContent ref={contentRef} className="p-2 px-6 transition-all bg-primary/5 duration-1000 ease-in-out h-full justify-bottom">
                 <div
-                    className={`flex transition-all duration-1000 ease-in-out ${isCollapsed ? "flex-row items-center" : "flex-col items-center"
+                    className={`flex transition-all duration-1000 ease-in-out items-center ${isCollapsed ? "flex-row" : "flex-col "
                         }`}
                 >
                     <div
-                        className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-32 h-32 mb-6"
+                        className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "w-12 h-12 flex-shrink-0" : "w-[50vw] h-full mb-6"
                             }`}
                     >
                         <AvatarUpload url={avatarUrl} onUpload={setAvatarUrl} isCollapsed={isCollapsed} />
@@ -66,16 +66,16 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
                         {!isCollapsed || isEditing ? (
                             <form onSubmit={isCollapsed ? handleNameSubmit : handleSubmit} className="space-y-2">
                                 {!isCollapsed && <Label htmlFor="name">Name</Label>}
-                                <div className="flex gap-2">
+                                <div className="flex gap-4 h-full">
                                     <Input
                                         id="name"
                                         placeholder="Nadějný chemik"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="flex-grow"
+                                        className="flex-grow border-primary border-2"
                                     />
                                     {isCollapsed && (
-                                        <Button type="submit" size="sm">
+                                        <Button type="submit" size="default">
                                             Save
                                         </Button>
                                     )}
@@ -83,24 +83,19 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
                             </form>
                         ) : (
                             <div
-                                className="text-lg font-semibold flex items-center gap-2 cursor-pointer"
+                                className="text-lg font-semibold flex items-center gap-2 cursor-pointer h-full"
                                 onClick={handleNameClick}
                             >
                                 {name}
-                                <Pencil className="w-4 h-4 text-gray-500" />
+                                <Pencil className="w-4 h-4 text-primary" />
                             </div>
                         )}
                     </div>
                 </div>
-            </CardContent>
-            <CardFooter
-                className={`transition-all duration-1000 ease-in-out ${isCollapsed ? "opacity-0 pointer-events-none h-0 p-0" : "opacity-100 h-auto"
-                    }`}
-            >
-                <Button onClick={handleSubmit} className="w-full">
+                <Button onClick={handleSubmit} className={cn("w-full mt-2", isCollapsed ? "hidden" : "visible")}>
                     Submit
                 </Button>
-            </CardFooter>
+            </CardContent>
         </Card>
     )
 }

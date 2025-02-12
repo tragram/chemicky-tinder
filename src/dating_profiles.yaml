@@ -206,7 +206,7 @@
   job: "žhavý asistent"
   images:
     - "trojnozka1.jpg"   
-    - "trojnozka2.jpg"   
+    - "trojnozkka2.jpg"   
     - "trojnozka3.jpg"   
 
 - name: "Kahan"
@@ -214,11 +214,22 @@
   age: "19. století"
   job: "záhřevy všeho druhu"
   images:
-    - ""  
+    - "kahan1.jpeg"  
+    - "kahan2.jpeg" 
 
 - name: "Kádinka"
   description: "Jsi často na dně? To to jsi ten/ta pravý/á pro mě. Díky spodku jsem pevná, stabilní, ale pro tvrďáky křehká. Se studeným se orosím, ale nepohrdnu i horku nebo žáru."
   age: "19. století"
   job: "záhřevy všeho druhu"
   images:
-    - ""  
+    - "kadinka1.jpg"  
+    - "kadinka2.jpg"  
+
+- name: "Kalkulačka"
+  description: "Miluji čísla – čím víc, tím líp! Když do mě bušíš správně, roztočím se blahem a všechno ti spočítám. Dej swipe doprava a uvidíš, jak rychle se v našich výpočtech ztratíš (nebo najdeš?)."
+  age: "1642"
+  job: "čísla"
+  images:
+   - "kalkulacka1.jpg"  
+   - "kalkulacka2.jpeg"
+   - "kalkulacka3.jpeg"

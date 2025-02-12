@@ -19,10 +19,10 @@ export default function DatingPage() {
 
   return (
     <DefaultLayout>
-      <div className="flex absolute w-screen h-[90vh] p-2 md:p-4 lg:p-8 z-0 items-end">
+      <div className="flex absolute w-screen h-[90vh] md:h-[85vh] p-2 md:p-4 lg:p-8 z-0 items-end">
         <TinderStack profiles={data} onMatch={setMatchedProfile} />
       </div>
-      <div className={cn("z-0 transition-all duration-1000 ease-in-out absolute w-screen flex items-end md:items-center justify-center md:p-8", isUserCollapsed ? "h-[10vh] bottom-0" : "h-screen")}>
+      <div className={cn("z-0 transition-all duration-1000 ease-in-out absolute w-screen flex items-end md:items-center justify-center md:p-8", isUserCollapsed ? "h-[10vh] md:h-[15vh] bottom-0" : "h-screen")}>
         <UserInfo isCollapsed={isUserCollapsed} setIsCollapsed={setIsUserCollapsed} name={name} setName={setName} avatarUrl={avatarUrl} setAvatarUrl={setAvatarUrl} />
       </div>
 

@@ -108,11 +108,13 @@
   images:
     - "kaminek1.jpg"   
     - "kaminek2.jpg"
+    - "kaminek3.jpg"
+    - "kaminek4.jpg"
     
 - name: "Míchadlo"
   description: "Rande se mnou bude kolotoč zážitků. Nepostojím na jednom místě a jsem hodně akční. Sice toho hodně vydržím, ale když si nedáš pozor, proklouznu ti mezi prsty. Pokud mě ale budeš přitahovat, můžeme to spolu pořádně roztočit. Tak co? Necháš si ode mě zamotat hlavu?"
   age: "1945"
-  job: "Varné procesy"
+  job: "Varné a mísící procesy"
   images:
     - "michadlo1.jpg"   
     - "michadlo2.jpg"   

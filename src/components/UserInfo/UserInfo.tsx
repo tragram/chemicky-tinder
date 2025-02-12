@@ -41,9 +41,12 @@ export default function CollapsibleProfileCard({ name, setName, avatarUrl, setAv
 
     return (
         <Card
-            className={cn(`rounded-3xl w-full overflow-hidden bg-white border-primary transition-all duration-1000 ease-in-out`,
-                isCollapsed ? "max-w-[600px]" : "aspect-[2/3] h-full w-full")}
-            style={{ minHeight: isCollapsed ? "4rem" : (height ? `${height}px` : "40px") }}
+            className={cn(`rounded-3xl overflow-hidden bg-white border-primary transition-all duration-1000 ease-in-out`,
+                isCollapsed ? "" : "aspect-[2/3] h-full w-full")}
+            style={{
+                minHeight: isCollapsed ? "4rem" : (height ? `${height}px` : "40px"),
+                width: isCollapsed ? "calc(50vh)" : "100%" // Match TinderCard width when collapsed
+            }}
         >
             <CardContent ref={contentRef} className="p-2 px-6 transition-all duration-1000 ease-in-out">
                 <div

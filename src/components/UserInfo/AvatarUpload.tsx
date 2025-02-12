@@ -129,8 +129,8 @@ export default function AvatarUpload({ url, onUpload, isCollapsed }: AvatarUploa
           </div>
         )}
         {/* Hover overlay */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-colors">
-          <span className="text-white bg-black/30 h-full w-full opacity-0 hover:opacity-100 transition-opacity">
+        <div className="absolute inset-0 flex justify-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-colors">
+          <span className="text-white content-center bg-black/30 h-full w-full opacity-0 hover:opacity-100 transition-opacity">
             Change
           </span>
         </div>

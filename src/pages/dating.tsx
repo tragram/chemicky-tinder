@@ -11,7 +11,7 @@ export default function DatingPage() {
   const [name, setName] = useState("Nadějný chemik");
   const [isUserCollapsed, setIsUserCollapsed] = useState(false);
   const [matchedProfile, setMatchedProfile] = useState<TinderProfile | null>(null);    
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("default_profile_img.png");
 
   const handleContinue = () => {
     setMatchedProfile(null);

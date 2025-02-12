@@ -12,7 +12,7 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
     const [currentImage, setCurrentImage] = useState(0);
-
+    console.log(cardRef.current?.getBoundingClientRect())
     const handleTap = (e) => {
         const { clientX } = e;
         const rect = cardRef.current?.getBoundingClientRect();
@@ -32,15 +32,15 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef }) => {
                     <div
                         key={index}
                         className={`w-[35px] h-1.5 rounded backdrop-blur-md ${currentImage === index
-                            ? `bg-primary bg-opacity-90`
-                            : `bg-[white] bg-opacity-50`
+                            ? `bg-primary`
+                            : `bg-primary/20`
                             }`}
                     />
                 ))}
             </div>
             < div
                 onClick={handleTap}
-                className="relative w-full h-full overflow-hidden z-0"
+                className="relative w-full h-full overflow-hidden z-5"
             >
                 <div
                     className="flex w-full h-full"

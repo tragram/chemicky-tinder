@@ -24,7 +24,7 @@ type SwipeDirection = null | "left" | "right";
 
 const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     return (
-        <div className={cn("absolute bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{ opacity: visibility }}>
+        <div className={cn("absolute pointer-events-none bg-opacity-20 top-0 left-0 w-full h-full", colorClassName)} style={{ opacity: visibility }}>
             <div className={cn("absolute top-8 border-2  p-2 rounded-full font-bold", colorClassName, className)}>
                 {children}
             </div>
@@ -103,8 +103,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
         },
         { filterTaps: true, eventOptions: { capture: true } }
     );
-    // TODO: forward ref
-    console.log(active)
     return (
         <animated.div
             ref={cardRef}
@@ -119,7 +117,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
             }}
             className={cn("absolute aspect-[2/3] h-[90%] lg:h-[80%] rounded-3xl max-w-full bg-white ", active ? "shadow-lg" : "scale-90")}
         >
-            <div className={cn("h-full transition-all  rounded-3xl relative overflow-hidden ", active ? "" : "scale-90 blur-sm ")}>
+            <div className={cn("h-full transition-all  rounded-3xl relative overflow-hidden", active ? "" : "scale-90 blur-sm ")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
                 {active}
 
@@ -131,7 +129,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                     NOPE
                 </SwipeOverlay>
 
-                <div className="absolute inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0 "></div>
+                <div className="absolute pointer-events-none inset-0 bg-gradient-to-b from-20% from-transparent via-transparent to-black to-95% top-0 "></div>
 
                 <ProfileInfo profile={profile} />
             </div>

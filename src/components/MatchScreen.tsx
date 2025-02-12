@@ -3,6 +3,7 @@ import { Heart, Share2, CheckCheck, Link2, CalendarSync } from 'lucide-react';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { TinderProfile } from '@/types';
 import removeAccents from 'remove-accents';
+import { Button } from './ui/button';
 
 interface MatchScreenProps {
     userName: string;
@@ -59,22 +60,22 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     return (
         <div
             ref={matchScreenRef}
-            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center text-white p-4"
+            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center text-white p-4 gap-4"
         >
             <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
-            <div className="flex items-center justify-center mb-8">
+            <div className="flex items-center justify-center mb-8 w-full gap-8">
                 <div
-                    className="lg:w-[200px] w-[100px] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[20%] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}
                 />
-                <Heart className="text-[#f04e23] lg:w-16 w-12 aspect-square" />
+                <Heart className="text-primary h-12 w-12 md:w-16 md:h-16" />
                 <div
-                    className="lg:w-[200px] w-[100px] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[20%] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${profile.images[0]})`,
                         backgroundSize: 'cover',
@@ -83,26 +84,26 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 />
             </div>
 
-            <div className="text-center mb-8">
+            <div className="text-center mb-4">
                 <p className="text-2xl">
                     {userName} and {profile.name} liked each other
                 </p>
             </div>
 
-            <button
+            <Button
                 onClick={handleShare}
-                className="bg-[#f04e23] text-white px-8 py-3 my-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+                className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
             >
                 <Share2 className="w-5 h-5" />
                 Share Match
-            </button>
-            <button
+            </Button>
+            <Button
                 onClick={onContinue}
-                className="bg-[#f04e23] text-white px-8 py-3 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+                className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
             >
                 <CalendarSync className="w-5 h-5" />
                 Keep swiping
-            </button>
+            </Button>
         </div>
     );
 };

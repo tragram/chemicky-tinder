@@ -104,7 +104,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
         { filterTaps: true, eventOptions: { capture: true } }
     );
     // TODO: forward ref
-
+    console.log(active)
     return (
         <animated.div
             ref={cardRef}
@@ -117,10 +117,11 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
                 touchAction: "none",
                 zIndex: dragActive ? 50 : zIndex
             }}
-            className={cn("absolute aspect-[2/3] max-h-[75vh] h-full rounded-3xl max-w-full bg-white shadow-lg")}
+            className={cn("absolute aspect-[2/3] h-[75vh] rounded-3xl max-w-full bg-white ", active ? "shadow-lg" : "scale-90")}
         >
-            <div className={cn("h-full transition-all rounded-3xl relative overflow-hidden ", active ? "" : "blur-sm ")}>
+            <div className={cn("h-full transition-all  rounded-3xl relative overflow-hidden ", active ? "" : "scale-90 blur-sm ")}>
                 <ImageCarousel profile={profile} cardRef={cardRef} />
+                {active}
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR_CLS} className={`right-8`}>
                     LIKE
@@ -136,13 +137,13 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, active, onSwip
             </div>
             {/* (dis)like buttons */}
             <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-4 z-10">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500 shadow-lg">
+                <div className={cn("flex items-center justify-center w-12 h-12 rounded-full ", NOPE_COLOR_CLS, active ? "opacity-100" : "shadow-lg opacity-0")}>
                     <ThumbsDown size={24} color="white" onClick={() => {
                         animateSwipe("left", -1);
                         onSwipe("left", profile);
                     }} />
                 </div>
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500 shadow-lg">
+                <div className={cn("flex items-center justify-center w-12 h-12 rounded-full", LIKE_COLOR_CLS, active ? "opacity-100" : "shadow-lg opacity-0")}>
                     <Heart size={24} color="white" onClick={() => {
                         animateSwipe("right", 1);
                         onSwipe("right", profile);

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import TinderCard from './ui/TinderCard/TinderCard';
+import TinderCard from './TinderCard/TinderCard';
 import { TinderProfile } from '@/types';
 
 interface TinderStackProps {
@@ -20,13 +20,13 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
         }
         setActiveCard(activeCard + 1);
     }, [swipedRight, activeCard]);
-
+    console.log(activeCard)
     return (
-        <div className="relative w-full h-full flex justify-center items-center overscroll-contain touch-none">
+        <div className="relative w-full h-full flex justify-center items-center overscroll-contain">
             {profiles.map((profile, index) => (
                 <TinderCard
                     key={index}
-                    zIndex={10 - index}
+                    zIndex={profiles.length - index}
                     active={activeCard === index}
                     profile={profile}
                     onSwipe={handleSwipe}

@@ -231,3 +231,12 @@
    - "kalkulacka1.jpg"  
    - "kalkulacka2.jpeg"
    - "kalkulacka3.jpeg"
+   
+- name: "Agilní přístup"
+  description: "Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám. Týmový hráč – ve dvou se sprintuje líp!"
+  age: "Agilní srdce, flexibilní přístup"
+  job: "ekonom"
+  images:
+   - "agilni_pristup.jpg"   
+
+   

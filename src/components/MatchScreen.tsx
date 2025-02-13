@@ -93,25 +93,26 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
         setSharing(false);
     };
 
-    return (
+    return (<div className="fixed inset-0 h-full w-full z-50 bg-white flex flex-col justify-center " ref={matchScreenRef}>
+        <div className='absolute w-full h-full background opacity-10'></div>
         <div
-            ref={matchScreenRef}
-            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center text-center justify-center text-white p-4 gap-4 midh:lg:p-24"
-        >
-            <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
-            <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
+            className="relative flex flex-col items-center text-center justify-center text-primary m-4 gap-4 midh:lg:p-24"
+        >
+            <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">It's a Match!</div>
+
+            <div className="flex items-center justify-center mb-8 w-full gap-2 md:gap-4 lg:gap-8">
                 <div
-                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 bg-white border-white mx-4"
+                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 md:border-8 bg-white border-primary mx-4"
                     style={{
                         backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}
                 />
-                <Heart className="text-primary h-12 w-12 md:w-16 md:h-16" />
+                <Heart className="text-primary h-8 md:h-12 w-8 md:w-12 lg:w-16 lg:h-16" />
                 <div
-                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 border-white mx-4"
+                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 md:border-8 border-primary mx-4"
                     style={{
                         backgroundImage: `url(${profile.images[0]})`,
                         backgroundSize: 'cover',
@@ -121,7 +122,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             </div>
 
             <div className="text-center mb-4">
-                <p className="text-2xl">
+                <p className="text-2xl font-semibold">
                     {userName} and {profile.name} liked each other
                 </p>
             </div>
@@ -147,6 +148,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 </Button>
             }
         </div>
+    </div>
     );
 };
 

@@ -54,7 +54,6 @@
 }
 
 .background {
-  background-image: url(/valentynky.svg);
-  background-size: cover;
-  opacity: 0.2;
+  background-image: url(/background.svg);
+  background-size: contain;
 }

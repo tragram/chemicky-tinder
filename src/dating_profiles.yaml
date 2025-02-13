@@ -3,14 +3,14 @@
   age: "18. - 19. stol."
   job: "Tekutinový analytik"
   images:
-    - "https://m.verkon.cz/image/big/verkon-valec-odmerny-nizky-trida-presnosti-b-hneda-graduace-simax-27112.jpg"
-
+    - "Valec1.jpg"
+    - "Valec3.jpg"
+    
 - name: "Erlenka"
   description: "Čau cukrouši. Pokud ti nevadí širší, ale stabilní lady, budu pro tebe to pravé. Najdeš pro mě užití v každé situaci a jestli máš zábrus, jsem si jistá, že si skvěle sedneme. Nabízím vzduchotěsný vztah na krátkou dobu, avšak když se zaseknu, je možné, že spolu budeme navždy."
   age: "1860"
   job: "makám v labu"
   images:
-    - "https://upload.wikimedia.org/wikipedia/commons/7/78/250_mL_Erlenmeyer_flask.jpg"
     - "erlenka1.jpg"
     - "Erlenmayerka.jpg"
 
@@ -188,6 +188,7 @@
     - "chladic1.jpg"   
     - "chladic2.jpg"   
     - "Cleisenuv_chladic.jpg"  
+    
 - name: "Tlaková lahev"
   description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
   age: "1832"

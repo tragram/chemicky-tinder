@@ -12,17 +12,15 @@ interface MatchScreenProps {
     onContinue: () => void;
 }
 
-// TODO: na matchscreen neni upravene jmeno
-// na sdílet nejsou obrázky
-// jde mit ve vyexportovanem obrazku jine texty?
-
 const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile, onContinue }) => {
     const matchScreenRef = useRef(null);
+    const [sharing, setSharing] = useState(false);
     const sanitizeUserName = (userName: string) => {
         return removeAccents(userName).replace(/[^\x00-\x7F]/g, "").replace(" ", "_");
     }
     const imageFilename = sanitizeUserName(userName) + "_matched_" + sanitizeUserName(profile.name);
     const handleShare = async () => {
+        setSharing(true);
         try {
             if (!matchScreenRef.current) {
                 console.error("MatchScreen ref is null");
@@ -59,6 +57,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
         } catch (error) {
             console.error('Sharing failed', error);
         }
+        setSharing(false);
     };
 
     return (
@@ -66,7 +65,11 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             ref={matchScreenRef}
             className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center text-white p-4 gap-4"
         >
-            <div className="text-3xl font-bold mb-8">It's a Match!</div>
+            {sharing ?
+                <div className="text-3xl font-bold mb-8">Testík test!</div>
+                :
+                <div className="text-3xl font-bold mb-8">It's a Match!</div>
+            }
 
             <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
                 <div

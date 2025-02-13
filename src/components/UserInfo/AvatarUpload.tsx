@@ -122,7 +122,7 @@ export default function AvatarUpload({ url, onUpload, isCollapsed }: AvatarUploa
         onClick={() => fileInputRef.current?.click()}
       >
         {url ? (
-          <img src={url} alt="avatar" className="object-cover w-full h-full" />
+          <img src={url} alt="avatar" className="object-cover w-full h-full bg-white" />
         ) : (
           <div className={cn("flex items-center justify-center w-full h-full text-gray-500")}>
             {isCollapsed ? "" : "Choose Image"}

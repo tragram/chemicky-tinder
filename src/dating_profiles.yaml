@@ -161,7 +161,7 @@
   age: "1930"
   job: "makám v labu"
   images:
-    - "vialky1.jpg"   
+    - "vialky2.png"   
 
 - name: "Alonž"
   description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
@@ -186,8 +186,7 @@
   job: "chladírenství"
   images:
     - "chladic1.jpg"   
-    - "chladic2.jpg"   
-    - "Cleisenuv_chladic.jpg"  
+    - "chladic2.jpg"
     
 - name: "Tlaková lahev"
   description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
@@ -233,7 +232,7 @@
    - "kalkulacka3.jpeg"
    
 - name: "Agilní přístup"
-  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám. Týmový hráč – ve dvou se sprintuje líp!"
+  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám."
   age: "2001"
   job: "ekonom"
   images:

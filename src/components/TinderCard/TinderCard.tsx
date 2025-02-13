@@ -40,7 +40,6 @@ const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
 const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, onSwipe }) => {
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
-    const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
     const cardRef = useRef<HTMLDivElement>(null);
 
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({
@@ -68,7 +67,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
         ({ active, movement: [mx, my], direction: [dx], tap }) => {
             if (tap) return;
             const swipeDirection = mx > 0 ? "right" : "left";
-            setSwipeDirection(swipeDirection);
             const absMx = Math.abs(mx);
             const tagOpacity = absMx / SWIPE_THRESHOLD;
 
@@ -89,7 +87,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 if (!active) {
                     setNopeVisibility(0);
                     setLikeVisibility(0);
-                    setSwipeDirection(null);
                 }
                 api.start({
                     x: active ? mx : 0,

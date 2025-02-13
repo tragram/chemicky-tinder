@@ -1,6 +1,7 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import TinderCard from './TinderCard/TinderCard';
 import { TinderProfile } from '@/types';
+import BottomCard from './TinderCard/BottomCard';
 
 interface TinderStackProps {
     profiles: TinderProfile[];
@@ -17,7 +18,13 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
     const [activeCard, setActiveCard] = useState(0);
     const swipedRight = useRef(0);
     const nrMatched = useRef(0);
-    const handleSwipe = useCallback((direction: string, swipedProfile: TinderProfile) => {
+
+    // Memoize the sorted profiles array so that it's not changed on every render
+    const sortedProfiles = useMemo(() => {
+        return [...profiles].sort(() => Math.random() - 0.5);
+    }, []);
+
+    const handleSwipe = (direction: string, swipedProfile: TinderProfile) => {
         if (direction === 'right') {
             swipedRight.current = swipedRight.current + 1;
             if (Math.random() <= matchProbability(profiles.length, profiles.length - activeCard, nrMatched.current, swipedRight.current)) {
@@ -26,12 +33,13 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
             }
         }
         setActiveCard(activeCard + 1);
-    }, [swipedRight, activeCard]);
+    };
+
     return (
         <div className="relative w-full h-full flex justify-center items-center overscroll-contain">
-            {profiles.sort(() => Math.random() - 0.5).map((profile, index) => (
+            {sortedProfiles.map((profile, index) => (
                 <TinderCard
-                    key={index}
+                    key={profile.id()}
                     zIndex={profiles.length - index}
                     cardActive={activeCard === index}
                     profile={profile}

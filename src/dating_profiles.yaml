@@ -232,10 +232,24 @@
    - "kalkulacka3.jpeg"
    
 - name: "Agilní přístup"
-  description: "Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám. Týmový hráč – ve dvou se sprintuje líp!"
-  age: "Agilní srdce, flexibilní přístup"
+  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám. Týmový hráč – ve dvou se sprintuje líp!"
+  age: "2001"
   job: "ekonom"
   images:
    - "agilni_pristup.jpg"   
+
+- name: "PRINCE 2"
+  description: "Jsem PRINCE2 Certified a řídím vztahy metodicky – s jasnou vizí, milníky a pravidelnými revizemi. Hledám strategického partnera s vysokým ROI (Return On Intimacy) a dlouhodobou udržitelností. Rizika minimalizuji, ale do správných investic jdu naplno, a pokud něco nefunguje, aplikuji lessons learned a iteruji na nový přístup."
+  age: "1989"
+  job: "ekonom"
+  images:
+   - "Prince2.jpg"   
+   
+- name: "Spotřební koš"
+  description: "Jsem diverzifikovaný a vyvážený, ale stále hledám tu správnou položku do svého složení. Hledám stabilní vztah s nízkou cenovou elasticitou – žádné nahodilé výkyvy! Pokud si mě nevážíš teď, nechoď za mnou, až moje hodnota vzroste!"
+  age: "1919"
+  job: "ekonom"
+  images:
+   - "Spotrebni_kos.jpg"   
 
    

@@ -1,10 +1,4 @@
 {
     "buildCommand": "npm run build",
-    "installCommand": "npm install",
-    "rewrites": [
-        {
-            "source": "/",
-            "destination": "/chemicky-tinder"
-        }
-    ]
+    "installCommand": "npm install"
 }

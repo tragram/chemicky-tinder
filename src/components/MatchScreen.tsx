@@ -21,6 +21,39 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     const imageFilename = sanitizeUserName(userName) + "_matched_" + sanitizeUserName(profile.name);
     const handleShare = async () => {
         setSharing(true);
+        const buildBlob = async (element) => {
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            let dataUrl = '';
+            let i = 0;
+            let maxAttempts;
+            if (isSafari) {
+                maxAttempts = 5;
+            } else {
+                maxAttempts = 1;
+            }
+            let cycle = [];
+            let repeat = true;
+
+            while (repeat && i < maxAttempts) {
+                dataUrl = await toBlob(element as HTMLDivElement, {
+                    fetchRequestInit: {
+                        cache: 'no-cache',
+                    },
+                    skipAutoScale: true,
+                    includeQueryParams: true,
+
+                    pixelRatio: isSafari ? 1 : 3,
+                    quality: 1,
+                });
+                i += 1;
+                cycle[i] = dataUrl.length;
+
+                if (dataUrl.length > cycle[i - 1]) repeat = false;
+            }
+            //console.log('safari:' + isSafari + '_repeat_need_' + i);
+            return dataUrl;
+        };
+
         try {
             if (!matchScreenRef.current) {
                 console.error("MatchScreen ref is null");
@@ -28,7 +61,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             }
 
             // Capture the screenshot as a blob
-            const blob = await toBlob(matchScreenRef.current, { cacheBust: true });
+            const blob = await buildBlob(matchScreenRef.current);
 
             if (!blob) {
                 throw new Error('Failed to create image blob');
@@ -62,13 +95,13 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     return (
         <div
             ref={matchScreenRef}
-            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center text-center justify-center text-white p-4 gap-4"
+            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center text-center justify-center text-white p-4 gap-4 midh:lg:p-24"
         >
             <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
             <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
                 <div
-                    className="w-[40%] aspect-square rounded-full border-4 bg-white border-white mx-4"
+                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 bg-white border-white mx-4"
                     style={{
                         backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
@@ -77,7 +110,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 />
                 <Heart className="text-primary h-12 w-12 md:w-16 md:h-16" />
                 <div
-                    className="w-[40%] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[30dvw] max-h-[50dvh] max-w-[50dvh] h-[30dvw] rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${profile.images[0]})`,
                         backgroundSize: 'cover',

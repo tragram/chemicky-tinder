@@ -123,7 +123,10 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
 
             <div className="text-center mb-4">
                 <p className="text-2xl font-semibold">
-                    {userName} and {profile.name} liked each other
+                    {userName} and {profile.name}
+                </p>
+                <p className="text-2xl font-semibold">
+                    liked each other
                 </p>
             </div>
             {sharing &&

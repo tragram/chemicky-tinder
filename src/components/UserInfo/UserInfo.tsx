@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Pencil } from "lucide-react"
 import AvatarUpload from "./AvatarUpload"
 import { cn } from "@/lib/utils"
@@ -25,115 +26,130 @@ export default function CollapsibleProfileCard({
     setIsCollapsed
 }: CollapsibleProfileCardProps) {
     const [isEditing, setIsEditing] = useState(false)
+    const [editName, setEditName] = useState(name)
     const contentRef = useRef<HTMLDivElement>(null)
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value)
+        setEditName(e.target.value)
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        const trimmedName = name.trim()
+        const trimmedName = editName.trim()
 
         if (!trimmedName) {
-            return // Don't submit empty names
+            return
         }
 
+        setName(trimmedName)
         setIsCollapsed(true)
         setIsEditing(false)
     }
 
     const toggleEditing = (e) => {
         if (isCollapsed) {
-            e.preventDefault();
-            const isEditingStart = isEditing;
-            setIsEditing(!isEditing);
-            if (!isEditingStart) {
-                const nameField = document.getElementById("name");
-                setTimeout(() => {
-                    nameField?.focus();
-                }, 10);
-            }
+            e.preventDefault()
+            setIsEditing(!isEditing)
         }
     }
+
     return (
-        <Card
-            className={cn(
-                "rounded-none md:tall:rounded-3xl overflow-hidden bg-white border-primary border-0 md:tall:border-2 transition-all duration-500 ease-in-out shadow-lg",
-                isCollapsed ? "w-full h-fit md:tall:w-[calc((82dvh)*2/3-1em)] outline outline-primary outline-4" : "w-full h-full"
-            )}
-        >
-            <CardContent
-                ref={contentRef}
-                className={cn("p-2 px-6 transition-all duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start bg-primary" : "p-16 content-center bg-primary/5 ")}
+        <>
+            <Card
+                className={cn(
+                    "rounded-none md:tall:rounded-3xl overflow-hidden bg-white border-primary border-0 md:tall:border-2 transition-all duration-500 ease-in-out shadow-lg",
+                    isCollapsed ? "w-full h-fit md:tall:w-[calc((82dvh)*2/3-1em)] outline outline-primary outline-4" : "w-full h-full"
+                )}
             >
-                <div
-                    className={cn(
-                        "flex flex-col transition-all duration-500 ease-in-out items-center",
-                        isCollapsed ? "flex-row" : "flex-col"
-                    )}
+                <CardContent
+                    ref={contentRef}
+                    className={cn("p-2 px-6 transition-all duration-500 ease-in-out h-full justify-bottom",
+                        isCollapsed ? "flex justify-center md:tall:justify-start bg-primary" : "p-16 content-center bg-primary/5")}
                 >
-                    {!isCollapsed&&
-                    <h1 className="font-extrabold text-3xl mb-16 text-primary">Název</h1>
-                    }
                     <div
                         className={cn(
-                            "transition-all text-center duration-500 ease-in-out",
-                            isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[calc(min(50dvh,70dvw)] h-[calc(min(50dvh,70dvw)] mb-6"
+                            "flex flex-col transition-all duration-500 ease-in-out items-center",
+                            isCollapsed ? "flex-row" : "flex-col"
                         )}
                     >
-                        <AvatarUpload
-                            url={avatarUrl}
-                            onUpload={setAvatarUrl}
-                            isCollapsed={isCollapsed}
-                        />
-                        <div className={cn("font-semibold mt-2 text-primary",isCollapsed?"hidden":"visible")}>Zvol si svůj avatar...</div>
-                    </div>
-
-
-                    <div
-                        className={cn(
-                            "transition-all duration-500 ease-in-out",
-                            isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
-                        )}
-                    >
-                        <form
-                            onSubmit={handleSubmit}
-                            className=""
-                        >
-                            {!isCollapsed && <Label className="text-primary" htmlFor="name">...a jméno</Label>}
-                            <div className={cn("flex gap-4 h-full", !isCollapsed || isEditing ? "visible" : "hidden")}>
-                                <Input
-                                    id="name"
-                                    placeholder="Nadějný chemik"
-                                    value={name}
-                                    onChange={handleNameChange}
-                                    className="flex-grow border-primary border-2 bg-white text-zinc-800"
-                                />
-                                {isCollapsed && (
-                                    <Button type="submit" size="default" className=" border-2 border-white text-white">
-                                        Save
-                                    </Button>
-                                )}
+                        {!isCollapsed &&
+                            <div className="flex flex-col text-center mb-12 mid:mb-16  text-primary gap-2">
+                                <h1 className="font-extrabold text-3xl">VŠCHT MatchLab</h1>
+                                {/* <h2 className="font-bold text-xl">Najdi svou spřízněnou duši!</h2> */}
                             </div>
-
-                            <Button
-                                onClick={handleSubmit}
-                                className={cn("w-full mt-2", isCollapsed && "hidden")}
-                            >
-                                Submit
-                            </Button>
-                        </form>
-                        <button
-                            className={cn("text-lg font-semibold flex items-center gap-2 w-full text-left", isCollapsed && !isEditing ? "visible" : "hidden")}
-                            onClick={toggleEditing}
+                        }
+                        <div
+                            className={cn(
+                                "transition-all text-center duration-500 ease-in-out",
+                                isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[calc(min(50dvh,70dvw)] h-[calc(min(50dvh,70dvw)] mb-6"
+                            )}
                         >
-                            <span className="truncate text-white">{name}</span>
-                            <Pencil className="w-4 h-4 text-white flex-shrink-0" />
-                        </button>
+                            <AvatarUpload
+                                url={avatarUrl}
+                                onUpload={setAvatarUrl}
+                                isCollapsed={isCollapsed}
+                            />
+                            <div className={cn("font-semibold mt-2 text-primary", isCollapsed ? "hidden" : "visible")}>
+                                Zvol si svůj avatar...
+                            </div>
+                        </div>
+
+                        <div
+                            className={cn(
+                                "transition-all duration-500 ease-in-out",
+                                isCollapsed ? "ml-4 flex-grow" : "w-full mt-6"
+                            )}
+                        >
+                            {!isCollapsed ? (
+                                <form onSubmit={handleSubmit}>
+                                    <Label className="text-primary" htmlFor="name">...a jméno</Label>
+                                    <Input
+                                        id="name"
+                                        placeholder="Nadějný chemik"
+                                        value={editName}
+                                        onChange={handleNameChange}
+                                        className="flex-grow border-primary border-2 bg-white text-zinc-800"
+                                    />
+                                    <Button className="w-full mt-2">
+                                        Submit
+                                    </Button>
+                                </form>
+                            ) : (
+                                <button
+                                    className="text-lg font-semibold flex items-center gap-2 w-full text-left"
+                                    onClick={toggleEditing}
+                                >
+                                    <span className="truncate text-white">{name}</span>
+                                    <Pencil className="w-4 h-4 text-white flex-shrink-0" />
+                                </button>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </CardContent>
-        </Card>
+                </CardContent>
+            </Card>
+
+            <Dialog open={isEditing && isCollapsed} onOpenChange={setIsEditing}>
+                <DialogContent className="sm:max-w-md">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <Label htmlFor="nameEdit">Edit Name</Label>
+                        <Input
+                            id="nameEdit"
+                            placeholder="Nadějný chemik"
+                            value={editName}
+                            onChange={handleNameChange}
+                            className="border-primary border-2 bg-white text-zinc-800"
+                        />
+                        <div className="flex justify-end gap-2">
+                            <Button type="button" variant="outline" onClick={() => setIsEditing(false)}>
+                                Cancel
+                            </Button>
+                            <Button type="submit">
+                                Save
+                            </Button>
+                        </div>
+                    </form>
+                </DialogContent>
+            </Dialog>
+        </>
     )
 }

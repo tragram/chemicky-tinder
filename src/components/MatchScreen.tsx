@@ -12,6 +12,10 @@ interface MatchScreenProps {
     onContinue: () => void;
 }
 
+// TODO: na matchscreen neni upravene jmeno
+// na sdílet nejsou obrázky
+// jde mit ve vyexportovanem obrazku jine texty?
+
 const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile, onContinue }) => {
     const matchScreenRef = useRef(null);
     const sanitizeUserName = (userName: string) => {

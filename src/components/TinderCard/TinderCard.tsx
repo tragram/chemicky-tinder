@@ -117,7 +117,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR} className="left-16 -rotate-[30deg]">
-                    REAGUJI
+                    VAZEBNÝ
                 </SwipeOverlay>
 
                 <SwipeOverlay visibility={nopeVisibility} colorClassName={NOPE_COLOR} className="right-16 rotate-[30deg]">

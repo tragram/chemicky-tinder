@@ -15,7 +15,7 @@
     - "Erlenmayerka.jpg"
 
 - name: "Petriho miska"
-  description: "Nejsem žádná křehotinka, zvládám vysoké teploty pod autoklávem. Preferuji společnost před osamělým životem. Pokud máš rád dobrodružství, můžeme spolu nakultivovat nějakou zajímavou kulturu 😉."
+  description: "Nejsem žádná křehotinka, zvládám vysoké teploty pod autoklávem. Preferuji společnost před osamělým životem. Pokud máš rád dobrodružství, můžeme spolu nakultivovat nějakou zajímavou kulturu 😉"
   age: "1887"
   job: "makám v labu"
   images:
@@ -81,7 +81,7 @@
     - "pipetman3.jpg"
 
 - name: "Mikrotitrační destička"
-  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád*a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
+  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád*a vysokou kapacitu a přesnost, pak jsme perfektní pár!"
   age: "1951"
   job: "Destičkaření"
   images:
@@ -164,7 +164,7 @@
     - "vialky2.png"   
 
 - name: "Alonž"
-  description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
+  description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, stačí když kape!"
   age: "17. - 18. stol."
   job: "destilační procesy"
   images:
@@ -207,7 +207,7 @@
     - "trojnozka3.jpg"   
 
 - name: "Kahan"
-  description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu! <3"
+  description: "Jsem horká hlava, stačí jiskra a už je oheň na střeše. Hledám někoho, kdo ocení můj spalující žár a nebojí se vášnivého vztahu. Pod mým dotykem se i ty rozpustíš blahem a budeš chtít, abych ještě přidal. Zkus to se mnou a já tě zaručeně přivedu k bodu varu!"
   age: "19. stol."
   job: "záhřevy všeho druhu"
   images:
@@ -232,14 +232,14 @@
    - "kalkulacka3.jpeg"
    
 - name: "Agilní přístup"
-  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám."
+  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Budeš součástí mého backlogu a pravidelných stand-upů (čti: ranního kafe)? Iterativní přístup – učím se z chyb, ale radši je nedělám."
   age: "2001"
   job: "ekonom"
   images:
    - "Agilni_pristup.jpg"   
 
 - name: "PRINCE 2"
-  description: "Jsem PRINCE2 Certified a řídím vztahy metodicky – s jasnou vizí, milníky a pravidelnými revizemi. Hledám strategického partnera s vysokým ROI (Return On Intimacy) a dlouhodobou udržitelností. Rizika minimalizuji, pokud něco nefunguje, aplikuji lessons learned a iteruji na nový přístup."
+  description: "Řídím vztahy metodicky – s jasnou vizí, milníky a pravidelnými revizemi. Hledám strategického partnera s vysokým ROI (Return On Intimacy) a dlouhodobou udržitelností. Pokud něco nefunguje, aplikuji lessons learned a iteruji na nový přístup."
   age: "1989"
   job: "ekonom"
   images:

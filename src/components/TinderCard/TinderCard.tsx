@@ -12,12 +12,6 @@ const SCREEN_WIDTH = window.innerWidth;
 const LIKE_COLOR = "#f04f23";
 const NOPE_COLOR = "#0065BD";
 
-interface TinderCardProps {
-    profile: TinderProfile;
-    cardActive: boolean;
-    zIndex: number;
-    onSwipe: (direction: string, profile: TinderProfile) => void;
-}
 
 type SwipeDirection = null | "left" | "right";
 
@@ -37,11 +31,36 @@ const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     )
 }
 
-const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, onSwipe }) => {
-    const [likeVisibility, setLikeVisibility] = useState(0);
-    const [nopeVisibility, setNopeVisibility] = useState(0);
+
+interface TinderCardProps {
+    profile: TinderProfile;
+    index: number;
+    activeCardRef: React.RefObject<number>;
+    zIndex: number;
+    onSwipe: (direction: string, profile: TinderProfile) => void;
+}
+
+const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, activeCardRef, onSwipe }) => {
+    const [isActive, setIsActive] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
+    // Check if this card should be active
+    useEffect(() => {
+        const checkActive = () => {
+            const shouldBeActive = activeCardRef.current === index;
+            if (shouldBeActive !== isActive) {
+                setIsActive(shouldBeActive);
+            }
+        };
+
+        checkActive();
+        // Set up an interval to check the ref value
+        const intervalId = setInterval(checkActive, 100);
+        return () => clearInterval(intervalId);
+    }, [index, isActive]);
+
+    const [likeVisibility, setLikeVisibility] = useState(0);
+    const [nopeVisibility, setNopeVisibility] = useState(0);
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({
         x: 0,
         y: 0,
@@ -51,8 +70,8 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
     }));
 
     useEffect(() => {
-        if (cardActive) { api.start({ scale: 1 }) }
-    }, [cardActive])
+        if (isActive) { api.start({ scale: 1 }) }
+    }, [isActive])
 
     const animateSwipe = (swipeDirection: SwipeDirection, dx) => {
         const outX = swipeDirection === "right" ? 2 * SCREEN_WIDTH : -2 * SCREEN_WIDTH;
@@ -111,9 +130,9 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                 touchAction: "none",
                 zIndex: zIndex,
             }}
-            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", cardActive ? "" : "")}
+            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", isActive ? "" : "")}
         >
-            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", cardActive ? "" : "blur-sm")}>
+            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", isActive ? "" : "blur-sm")}>
                 <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />
 
                 <SwipeOverlay visibility={likeVisibility} colorClassName={LIKE_COLOR} className="left-16 -rotate-[30deg]">
@@ -130,7 +149,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
             </div>
 
             <div className="absolute -bottom-5 midh:-bottom-6 tall:-bottom-10 left-0 right-0 flex justify-center gap-4 tall:gap-12 z-20" >
-                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", isActive ? "opacity-100" : "opacity-0")}
                     style={{ backgroundColor: NOPE_COLOR }}
                 >
                     <ThumbsDown
@@ -142,7 +161,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, cardActive, on
                         }}
                     />
                 </div>
-                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", cardActive ? "opacity-100" : "opacity-0")}
+                <div className={cn("flex items-center justify-center tall:w-20 tall:h-20 midh:w-12 midh:h-12 h-10 w-10 rounded-full", isActive ? "opacity-100" : "opacity-0")}
 
                     style={{ backgroundColor: LIKE_COLOR }}
                 >

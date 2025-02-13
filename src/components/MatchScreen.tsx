@@ -41,8 +41,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
                 await navigator.share({
                     files: [file],
-                    title: 'Check out our match!',
-                    text: 'Láska na první pohled',
+                    text: 'Zreagovali jsme v MatchLabu',
                 });
             } else {
                 // Fallback for downloading the image

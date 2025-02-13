@@ -3,8 +3,6 @@
   age: "18. - 19. stol."
   job: "Tekutinový analytik"
   images:
-    - "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Measuring_cylinder_hg.jpg/800px-Measuring_cylinder_hg.jpg"
-    - "https://www.funchem.cz/fotky27667/fotos/27667_912__vyr_799_valec-50.webp"
     - "https://m.verkon.cz/image/big/verkon-valec-odmerny-nizky-trida-presnosti-b-hneda-graduace-simax-27112.jpg"
 
 - name: "Erlenka"
@@ -83,7 +81,7 @@
     - "pipetman3.jpg"
 
 - name: "Mikrotitrační destička"
-  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu v ELISA, enzymových testech i spektrofotometrii. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád*a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
+  description: "Jsem organizovaná, precizní a zvládám multitasking – 96, 384 nebo 1536 úkolů najednou! Hledám partnera, který ocení mou efektivitu. Nebojím se pipetovacích robotů, ale šikovné ruce jsou mi stejně blízké. Pokud máš rád*a vysokou kapacitu a přesnost, možná jsme perfektní pár!"
   age: "1951"
   job: "Destičkaření"
   images:
@@ -106,7 +104,6 @@
   images:
     - "kaminek1.jpg"   
     - "kaminek2.jpg"
-    - "kaminek3.jpg"
     - "kaminek4.jpg"
     
 - name: "Míchadlo"

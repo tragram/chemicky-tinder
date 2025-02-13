@@ -37,7 +37,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             }
 
             // Create a File object
-            const file = new File([blob], `${imageFilename}.jpg`, { type: 'image/png' });
+            const file = new File([blob], `${imageFilename}.png`, { type: 'image/png' });
 
             // Check if the device supports file sharing
             if (navigator.canShare && navigator.canShare({ files: [file] })) {

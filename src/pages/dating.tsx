@@ -27,7 +27,7 @@ export default function DatingPage() {
 
       {matchedProfile && (
         <MatchScreen
-          userName={"Nadějný chemik"}
+          userName={name}
           userAvatar={avatarUrl}
           profile={matchedProfile}
           onContinue={handleContinue}

@@ -81,7 +81,7 @@ export default function CollapsibleProfileCard({
                         <div
                             className={cn(
                                 "transition-all text-center duration-500 ease-in-out",
-                                isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[calc(min(50dvh,70dvw)] h-[calc(min(50dvh,70dvw)] mb-6"
+                                isCollapsed ? "w-[5dvh] h-[5dvh] talh:md:w-12 talh:md:h-12 flex-shrink-0" : "w-[40dvh] max-w-[70dvw] h-[40dvh] max-h-[70dvw] mb-6"
                             )}
                         >
                             <AvatarUpload

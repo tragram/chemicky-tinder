@@ -16,7 +16,7 @@ const ProfileDetail: React.FC<{ icon: React.ElementType; text: string; isDescrip
             <div>
                 <Icon className="text-primary" size={16} />
             </div>
-            <p className={cn("text-sm md:text-base lg:text-lg", isDescription ? "font-semibold" : "font-bold")}>{text}</p>
+            <p className={cn("text-sm md:tall:text-base lg:tall:text-lg", isDescription ? "font-semibold" : "font-bold")}>{text}</p>
         </div>
     );
 };

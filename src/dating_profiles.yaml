@@ -3,14 +3,14 @@
   age: "18. - 19. stol."
   job: "Tekutinový analytik"
   images:
-    - "https://m.verkon.cz/image/big/verkon-valec-odmerny-nizky-trida-presnosti-b-hneda-graduace-simax-27112.jpg"
-
+    - "valec1.jpg"
+    - "valec3.jpg"
+    
 - name: "Erlenka"
   description: "Čau cukrouši. Pokud ti nevadí širší, ale stabilní lady, budu pro tebe to pravé. Najdeš pro mě užití v každé situaci a jestli máš zábrus, jsem si jistá, že si skvěle sedneme. Nabízím vzduchotěsný vztah na krátkou dobu, avšak když se zaseknu, je možné, že spolu budeme navždy."
   age: "1860"
   job: "makám v labu"
   images:
-    - "https://upload.wikimedia.org/wikipedia/commons/7/78/250_mL_Erlenmeyer_flask.jpg"
     - "erlenka1.jpg"
     - "Erlenmayerka.jpg"
 
@@ -161,7 +161,7 @@
   age: "1930"
   job: "makám v labu"
   images:
-    - "vialky1.jpg"   
+    - "vialky2.png"   
 
 - name: "Alonž"
   description: "Máš rád*a ladné křivky? Já jsem zahnutá dost. Ráda ti pomůžu zkondenzovat všechny tvé vize do jasného a čistého cíle. Nebude to se mnou vždy jen krásné a snadné, ale nikdy tě nezklamu a nebudeš se se mnou nudit. Moje životní moto je: nemusí téct, hlavně když kape!"
@@ -185,10 +185,9 @@
   age: "30. léta 20. stol."
   job: "chladírenství"
   images:
-    - "Cleisenuv_chladic.jpg"   
     - "chladic1.jpg"   
-    - "chladic2.jpg"   
-
+    - "chladic2.jpg"
+    
 - name: "Tlaková lahev"
   description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
   age: "1832"
@@ -231,3 +230,26 @@
    - "kalkulacka1.jpg"  
    - "kalkulacka2.jpeg"
    - "kalkulacka3.jpeg"
+   
+- name: "Agilní přístup"
+  description: "Agilní srdce, flexibilní přístup. Scrum Master v lásce i v práci – iteruji, přizpůsobuji se a vždy doručím hodnotu. Hledám někoho, kdo bude součástí mého backlogu a nebojí se pravidelných stand-upů (čti: ranního kafe). Iterativní přístup ke vztahům – učím se z chyb, ale radši je nedělám."
+  age: "2001"
+  job: "ekonom"
+  images:
+   - "agilni_pristup.jpg"   
+
+- name: "PRINCE 2"
+  description: "Jsem PRINCE2 Certified a řídím vztahy metodicky – s jasnou vizí, milníky a pravidelnými revizemi. Hledám strategického partnera s vysokým ROI (Return On Intimacy) a dlouhodobou udržitelností. Rizika minimalizuji, pokud něco nefunguje, aplikuji lessons learned a iteruji na nový přístup."
+  age: "1989"
+  job: "ekonom"
+  images:
+   - "Prince2.jpg"   
+   
+- name: "Spotřební koš"
+  description: "Jsem diverzifikovaný a vyvážený, ale stále hledám tu správnou položku do svého složení. Hledám stabilní vztah s nízkou cenovou elasticitou – žádné nahodilé výkyvy! Pokud si mě nevážíš teď, nechoď za mnou, až moje hodnota vzroste!"
+  age: "1919"
+  job: "ekonom"
+  images:
+   - "Spotrebni_kos.jpg"   
+
+   

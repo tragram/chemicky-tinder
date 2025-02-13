@@ -4,8 +4,8 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (<>
-    <div className="absolute w-screen h-screen background"></div>
-    <div className="relative flex flex-col h-dvh w-screen overflow-clip">
+    <div className="absolute h-dvh w-dvw background"></div>
+    <div className="relative flex flex-col h-dvh w-dvw overflow-clip">
         {children}
     </div>
       </>

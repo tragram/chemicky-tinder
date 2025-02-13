@@ -73,6 +73,9 @@ export default function CollapsibleProfileCard({
                         isCollapsed ? "flex-row" : "flex-col"
                     )}
                 >
+                    {!isCollapsed&&
+                    <h1 className="font-extrabold text-3xl mb-16 text-primary">Název</h1>
+                    }
                     <div
                         className={cn(
                             "transition-all text-center duration-500 ease-in-out",
@@ -84,7 +87,7 @@ export default function CollapsibleProfileCard({
                             onUpload={setAvatarUrl}
                             isCollapsed={isCollapsed}
                         />
-                        <div className={cn("font-semibold mt-2",isCollapsed?"hidden":"visible")}>Avatar</div>
+                        <div className={cn("font-semibold mt-2 text-primary",isCollapsed?"hidden":"visible")}>Zvol si svůj avatar...</div>
                     </div>
 
 
@@ -98,7 +101,7 @@ export default function CollapsibleProfileCard({
                             onSubmit={handleSubmit}
                             className=""
                         >
-                            {!isCollapsed && <Label className="" htmlFor="name">Name</Label>}
+                            {!isCollapsed && <Label className="text-primary" htmlFor="name">...a jméno</Label>}
                             <div className={cn("flex gap-4 h-full", !isCollapsed || isEditing ? "visible" : "hidden")}>
                                 <Input
                                     id="name"

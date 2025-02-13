@@ -64,11 +64,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
             ref={matchScreenRef}
             className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center text-center justify-center text-white p-4 gap-4"
         >
-            {sharing ?
-                <div className="text-3xl font-bold mb-8">Zreagovali jsme v MatchLabu!</div>
-                :
-                <div className="text-3xl font-bold mb-8">It's a Match!</div>
-            }
+            <div className="text-3xl font-bold mb-8">It's a Match!</div>
 
             <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
                 <div
@@ -95,6 +91,9 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                     {userName} and {profile.name} liked each other
                 </p>
             </div>
+            {sharing &&
+                <div className="text-3xl font-bold mb-8">Zreagovali jsme v MatchLabu!</div>
+            }
             {!sharing &&
                 <Button
                     onClick={handleShare}

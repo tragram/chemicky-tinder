@@ -95,7 +95,7 @@ export default function AvatarUpload({ url, onUpload, isCollapsed }: AvatarUploa
           />
         </div>
         {/* Modal controls */}
-        <div className="p-4 bg-white flex justify-end gap-4">
+        <div className="p-4 bg-white flex justify-center gap-4">
           <Button variant="destructive" onClick={cancelCrop}>
             Cancel
           </Button>

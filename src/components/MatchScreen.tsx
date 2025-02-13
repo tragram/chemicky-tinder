@@ -4,7 +4,6 @@ import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { TinderProfile } from '@/types';
 import removeAccents from 'remove-accents';
 import { Button } from './ui/button';
-
 interface MatchScreenProps {
     userName: string;
     userAvatar: string;
@@ -130,7 +129,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 </p>
             </div>
             {sharing &&
-                <div className="text-3xl font-bold mb-8">Zreagovali jsme v&nbsp;MatchLabu!</div>
+                <div className="text-2xl md:text-3xl font-bold mb-8">Zreagovali jsme v&nbsp;MatchLabu!</div>
             }
             {!sharing &&
                 <Button
@@ -150,6 +149,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                     Keep swiping
                 </Button>
             }
+            <img className="w-36 tall:w-48 mt-4" src="/logoVSCHT_stred_short.svg"></img>
         </div>
     </div>
     );

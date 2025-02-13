@@ -57,8 +57,8 @@ export default function CollapsibleProfileCard({
         <>
             <Card
                 className={cn(
-                    "rounded-none md:tall:rounded-3xl overflow-hidden bg-white border-primary border-0 md:tall:border-2 transition-all duration-500 ease-in-out shadow-lg",
-                    isCollapsed ? "w-full h-fit md:tall:w-[calc((82dvh)*2/3-1em)] outline outline-primary outline-4" : "w-full h-full"
+                    "rounded-none md:tall:rounded-3xl overflow-hidden border-0 bg-white transition-all duration-500 ease-in-out shadow-lg",
+                    isCollapsed ? "w-full h-fit md:tall:w-[calc((82dvh)*2/3-1em)]" : "w-full h-full"
                 )}
             >
                 <CardContent

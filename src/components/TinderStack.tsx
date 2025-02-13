@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, act, useState } from 'react';
 import TinderCard from './TinderCard/TinderCard';
 import { TinderProfile } from '@/types';
 import BottomCard from './TinderCard/BottomCard';
@@ -18,6 +18,7 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
     const activeCard = useRef(0);
     const swipedRight = useRef(0);
     const nrMatched = useRef(0);
+    const [atTheEnd, setAtTheEnd] = useState(false);
 
     const sortedProfiles = useMemo(() => {
         return [...profiles].sort(() => Math.random() - 0.5);
@@ -31,6 +32,7 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
             }
         }
         activeCard.current = activeCard.current + 1;
+        if (activeCard.current === profiles.length) setAtTheEnd(true);
     };
 
     return (
@@ -45,6 +47,7 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
                     onSwipe={handleSwipe}
                 />
             ))}
+            <BottomCard cardActive={atTheEnd} zIndex={0} />
         </div>
     );
 };

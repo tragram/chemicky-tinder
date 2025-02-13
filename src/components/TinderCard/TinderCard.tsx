@@ -143,7 +143,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, activeC
                     INERTNÍ
                 </SwipeOverlay>
 
-                <div className="absolute flex items-end top-0 w-full h-full z-0 pointer-events-none">
+                <div className="absolute flex items-end top-0 w-full h-full pointer-events-none">
                     <ProfileInfo profile={profile} className="max-h-[60%]" />
                 </div>
             </div>

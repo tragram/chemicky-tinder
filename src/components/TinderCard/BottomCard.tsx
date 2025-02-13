@@ -47,12 +47,12 @@ const BottomCard: React.FC<BottomCardProps> = ({ zIndex, cardActive }) => {
             <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip border-4 border-[#0065BD]", cardActive ? "" : "blur-sm")}
                 style={{ backgroundColor: NOPE_COLOR + "20" }}
             >
-                <div className="flex flex-col items-center h-full justify-center p-24 text-center gap-4">
+                <div className="flex flex-col items-center h-full justify-center text-center gap-4">
                     <h1 className="font-extrabold text-3xl text-[#0065BD] mb-8">Nemáš štěstí s&nbsp;hledáním svého VŠCHTího protějšku?</h1>
                     <Button className="text-xl" size={"lg"} onClick={() => window.location.reload()}>Zkusím to znovu!</Button>
                     <h2 className="font-bold text-xl text-[#0065BD]">nebo</h2>
                     <Button className="bg-[#0065BD] text-xl p-4" size={"lg"} asChild>
-                        <Link to="https://www.cvut.cz/">
+                        <Link to="https://fel.cvut.cz/cs/uchazeci/moznosti-studia">
                             Radši jdu naproti!
                         </Link>
                     </Button>

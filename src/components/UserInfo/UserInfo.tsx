@@ -65,7 +65,7 @@ export default function CollapsibleProfileCard({
         >
             <CardContent
                 ref={contentRef}
-                className={cn("p-2 px-6 transition-all bg-primary/5 duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start" : "p-16 content-center")}
+                className={cn("p-2 px-6 transition-all duration-500 ease-in-out h-full justify-bottom", isCollapsed ? "flex justify-center md:tall:justify-start bg-primary" : "p-16 content-center bg-primary/5 ")}
             >
                 <div
                     className={cn(
@@ -108,10 +108,10 @@ export default function CollapsibleProfileCard({
                                     placeholder="Nadějný chemik"
                                     value={name}
                                     onChange={handleNameChange}
-                                    className="flex-grow border-primary border-2 bg-white"
+                                    className="flex-grow border-primary border-2 bg-white text-zinc-800"
                                 />
                                 {isCollapsed && (
-                                    <Button type="submit" size="default">
+                                    <Button type="submit" size="default" className=" border-2 border-white text-white">
                                         Save
                                     </Button>
                                 )}
@@ -125,12 +125,11 @@ export default function CollapsibleProfileCard({
                             </Button>
                         </form>
                         <button
-                            type="button"
                             className={cn("text-lg font-semibold flex items-center gap-2 w-full text-left", isCollapsed && !isEditing ? "visible" : "hidden")}
                             onClick={toggleEditing}
                         >
-                            <span className="truncate">{name}</span>
-                            <Pencil className="w-4 h-4 text-primary flex-shrink-0" />
+                            <span className="truncate text-white">{name}</span>
+                            <Pencil className="w-4 h-4 text-white flex-shrink-0" />
                         </button>
                     </div>
                 </div>

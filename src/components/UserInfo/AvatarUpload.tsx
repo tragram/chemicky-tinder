@@ -118,7 +118,7 @@ export default function AvatarUpload({ url, onUpload, isCollapsed }: AvatarUploa
 
       {/* Avatar preview container – size controlled by the parent */}
       <div
-        className={cn("relative w-full h-full rounded-full overflow-hidden bg-gray-200 cursor-pointer outline-primary outline outline-4", isCollapsed ? "text-xs" : "")}
+        className={cn("relative w-full h-full rounded-full overflow-hidden bg-gray-200 cursor-pointer border-white border-2 outline-primary outline ", isCollapsed ? "text-xs outline-2" : "outline-2")}
         onClick={() => fileInputRef.current?.click()}
       >
         {url ? (

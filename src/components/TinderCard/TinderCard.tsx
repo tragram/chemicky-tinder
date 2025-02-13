@@ -117,7 +117,6 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, activeC
         },
         { filterTaps: true, eventOptions: { capture: true } }
     );
-
     return (
         <animated.div
             ref={cardRef}
@@ -130,7 +129,7 @@ const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, activeC
                 touchAction: "none",
                 zIndex: zIndex,
             }}
-            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl ", isActive ? "" : "")}
+            className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl will-change-transform", isActive ? "" : "")}
         >
             <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip bg-white", isActive ? "" : "blur-sm")}>
                 <ImageCarousel className="image-carousel" profile={profile} cardRef={cardRef} />

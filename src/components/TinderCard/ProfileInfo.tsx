@@ -24,7 +24,7 @@ const ProfileDetail: React.FC<{ icon: React.ElementType; text: string; isDescrip
 
 const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile, className }) => {
     return (
-        <div className={cn("flex flex-col flex-shrink p-4 pb-8 tall:lg:p-8 tall:pb-16 tall:lg:pb-16 w-full h-fit text-white gap-1 tall:lg:gap-2 pointer-events-none z-20 bg-gradient-to-b from-transparent via-black/70 via-40% to-black", className)}>
+        <div className={cn("flex flex-col flex-shrink p-4 pb-8 tall:lg:p-8 tall:pb-16 tall:lg:pb-16 w-full h-fit text-white gap-1 tall:lg:gap-2 pointer-events-none bg-gradient-to-b from-transparent via-black/70 via-40% to-black", className)}>
 
             <h2 className={cn("text-lg tall:md:text-2xl font-extrabold mt-[15%]", "text-primary")}>{profile.name}
             </h2>

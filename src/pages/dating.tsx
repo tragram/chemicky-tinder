@@ -18,7 +18,7 @@ export default function DatingPage() {
   };
   return (
     <DefaultLayout>
-      <div className="flex absolute w-full h-[85dvh] p-6 top-[3dvh] items-end z-0">
+      <div className={cn("flex absolute w-full h-[85dvh] p-6 top-[3dvh] items-end z-0", isUserCollapsed ? "opacity-100" : "opacity-0")}>
         <TinderStack profiles={(data as TinderRecord[]).map(d => createTinderProfile(d))} onMatch={setMatchedProfile} />
       </div>
       <div className={cn("transition-all duration-500 ease-in-out absolute w-full flex items-end md:tall:items-center justify-center md:tall:p-8 z-10", isUserCollapsed ? "h-[10dvh] bottom-0" : "h-full")}>

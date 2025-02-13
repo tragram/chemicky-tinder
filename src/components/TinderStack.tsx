@@ -15,7 +15,7 @@ const matchProbability = (totalProfileNr: number, profilesLeft: number, matchedA
 }
 
 const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
-    const activeCard = useRef(0);
+    const [activeCardIndex, setActiveCardIndex] = useState(0);
     const swipedRight = useRef(0);
     const nrMatched = useRef(0);
     const [atTheEnd, setAtTheEnd] = useState(false);
@@ -23,31 +23,32 @@ const TinderStack: React.FC<TinderStackProps> = ({ profiles, onMatch }) => {
     const sortedProfiles = useMemo(() => {
         return [...profiles].sort(() => Math.random() - 0.5);
     }, []);
+
     const handleSwipe = (direction: string, swipedProfile: TinderProfile) => {
         if (direction === 'right') {
             swipedRight.current = swipedRight.current + 1;
-            if (Math.random() <= matchProbability(profiles.length, profiles.length - activeCard.current, nrMatched.current, swipedRight.current)) {
+            if (Math.random() <= matchProbability(profiles.length, profiles.length - activeCardIndex, nrMatched.current, swipedRight.current)) {
                 nrMatched.current = nrMatched.current + 1;
                 onMatch(swipedProfile);
             }
         }
-        activeCard.current = activeCard.current + 1;
-        if (activeCard.current === profiles.length) setAtTheEnd(true);
+        setActiveCardIndex(prev => prev + 1);
+        if (activeCardIndex + 1 === profiles.length) setAtTheEnd(true);
     };
 
     return (
-        <div className="relative w-full h-full flex justify-center items-center overscroll-contain">
+        <div className="relative z-auto w-full h-full flex justify-center items-center overscroll-contain">
+            <BottomCard cardActive={atTheEnd} zIndex={0} />
             {sortedProfiles.map((profile, index) => (
                 <TinderCard
                     key={profile.id()}
                     zIndex={profiles.length - index}
                     index={index}
-                    activeCardRef={activeCard}
+                    isActive={activeCardIndex === index}
                     profile={profile}
                     onSwipe={handleSwipe}
                 />
             ))}
-            <BottomCard cardActive={atTheEnd} zIndex={0} />
         </div>
     );
 };

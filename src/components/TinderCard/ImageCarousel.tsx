@@ -27,7 +27,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ profile, cardRef, classNa
     };
     return (
         <>
-            <div className="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-10">
+            <div className="absolute top-2 left-0 right-0 flex justify-center gap-1.5 z-10 will-change-transform">
                 {profile.images.map((_, index) => (
                     <div
                         key={index}

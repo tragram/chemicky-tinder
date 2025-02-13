@@ -31,34 +31,16 @@ const SwipeOverlay = ({ visibility, colorClassName, className, children }) => {
     )
 }
 
-
 interface TinderCardProps {
     profile: TinderProfile;
     index: number;
-    activeCardRef: React.RefObject<number>;
+    isActive: boolean;  // Instead of activeCardRef
     zIndex: number;
     onSwipe: (direction: string, profile: TinderProfile) => void;
 }
 
-const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, activeCardRef, onSwipe }) => {
-    const [isActive, setIsActive] = useState(false);
+const TinderCard: React.FC<TinderCardProps> = ({ profile, zIndex, index, isActive, onSwipe }) => {
     const cardRef = useRef<HTMLDivElement>(null);
-
-    // Check if this card should be active
-    useEffect(() => {
-        const checkActive = () => {
-            const shouldBeActive = activeCardRef.current === index;
-            if (shouldBeActive !== isActive) {
-                setIsActive(shouldBeActive);
-            }
-        };
-
-        checkActive();
-        // Set up an interval to check the ref value
-        const intervalId = setInterval(checkActive, 100);
-        return () => clearInterval(intervalId);
-    }, [index, isActive]);
-
     const [likeVisibility, setLikeVisibility] = useState(0);
     const [nopeVisibility, setNopeVisibility] = useState(0);
     const [{ x, y, rotate, scale }, api] = useSpring(() => ({

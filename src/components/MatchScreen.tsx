@@ -63,17 +63,17 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     return (
         <div
             ref={matchScreenRef}
-            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center text-white p-4 gap-4"
+            className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center text-center justify-center text-white p-4 gap-4"
         >
             {sharing ?
-                <div className="text-3xl font-bold mb-8">Testík test!</div>
+                <div className="text-3xl font-bold mb-8">Zreagovali jsme v MatchLabu!</div>
                 :
                 <div className="text-3xl font-bold mb-8">It's a Match!</div>
             }
 
             <div className="flex items-center justify-center mb-8 w-full gap-4 lg:gap-8">
                 <div
-                    className="w-[30%] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[40%] aspect-square rounded-full border-4 bg-white border-white mx-4"
                     style={{
                         backgroundImage: `url(${userAvatar})`,
                         backgroundSize: 'cover',
@@ -82,7 +82,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 />
                 <Heart className="text-primary h-12 w-12 md:w-16 md:h-16" />
                 <div
-                    className="w-[30%] aspect-square rounded-full border-4 border-white mx-4"
+                    className="w-[40%] aspect-square rounded-full border-4 border-white mx-4"
                     style={{
                         backgroundImage: `url(${profile.images[0]})`,
                         backgroundSize: 'cover',
@@ -96,21 +96,24 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                     {userName} and {profile.name} liked each other
                 </p>
             </div>
-
-            <Button
-                onClick={handleShare}
-                className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
-            >
-                <Share2 className="w-5 h-5" />
-                Share Match
-            </Button>
-            <Button
-                onClick={onContinue}
-                className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
-            >
-                <CalendarSync className="w-5 h-5" />
-                Keep swiping
-            </Button>
+            {!sharing &&
+                <Button
+                    onClick={handleShare}
+                    className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+                >
+                    <Share2 className="w-5 h-5" />
+                    Share Match
+                </Button>
+            }
+            {!sharing &&
+                <Button
+                    onClick={onContinue}
+                    className="bg-primary text-white px-8 rounded-full text-lg hover:bg-[#d43e1b] transition-colors flex items-center gap-2"
+                >
+                    <CalendarSync className="w-5 h-5" />
+                    Keep swiping
+                </Button>
+            }
         </div>
     );
 };

@@ -185,10 +185,9 @@
   age: "30. léta 20. stol."
   job: "chladírenství"
   images:
-    - "Cleisenuv_chladic.jpg"   
     - "chladic1.jpg"   
     - "chladic2.jpg"   
-
+    - "Cleisenuv_chladic.jpg"  
 - name: "Tlaková lahev"
   description: "Stabilní parťák pro tvé experimenty! Jsem odolná, spolehlivá a vždy dodám přesně tolik plynu, kolik je třeba. S pevností a precizní regulací tlaku zajistím pouze bezpečné a kontrolované reakce!"
   age: "1832"

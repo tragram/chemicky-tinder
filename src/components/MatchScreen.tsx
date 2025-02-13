@@ -22,6 +22,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
     const handleShare = async () => {
         setSharing(true);
         const buildBlob = async (element) => {
+            // Safari is buggy and does not load the images on first try, so this ugly workaround has to be implemented
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             let dataUrl = '';
             let i = 0;
@@ -125,7 +126,7 @@ const MatchScreen: React.FC<MatchScreenProps> = ({ userName, userAvatar, profile
                 </p>
             </div>
             {sharing &&
-                <div className="text-3xl font-bold mb-8">Zreagovali jsme v MatchLabu!</div>
+                <div className="text-3xl font-bold mb-8">Zreagovali jsme v&nbsp;MatchLabu!</div>
             }
             {!sharing &&
                 <Button

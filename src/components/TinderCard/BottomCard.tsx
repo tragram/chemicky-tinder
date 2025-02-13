@@ -44,7 +44,7 @@ const BottomCard: React.FC<BottomCardProps> = ({ zIndex, cardActive }) => {
             }}
             className={cn("absolute aspect-[2/3] h-full max-w-full rounded-3xl bg-white", cardActive ? "" : "")}
         >
-            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip border-4 border-[#0065BD]", cardActive ? "" : "blur-sm")}
+            <div className={cn("h-full w-full transition-transform rounded-3xl relative overflow-clip border-4 border-[#0065BD] p-4", cardActive ? "" : "blur-sm")}
                 style={{ backgroundColor: NOPE_COLOR + "20" }}
             >
                 <div className="flex flex-col items-center h-full justify-center text-center gap-4">
@@ -53,7 +53,7 @@ const BottomCard: React.FC<BottomCardProps> = ({ zIndex, cardActive }) => {
                     <h2 className="font-bold text-xl text-[#0065BD]">nebo</h2>
                     <Button className="bg-[#0065BD] text-xl p-4" size={"lg"} asChild>
                         <Link to="https://fel.cvut.cz/cs/uchazeci/moznosti-studia">
-                            Radši jdu naproti!
+                            Omrknu to naproti!
                         </Link>
                     </Button>
                 </div>
